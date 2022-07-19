@@ -14,14 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping("/member/Save-form")
+    @GetMapping("/Save-form")
     public String saveForm(){
+
         return "/memberPages/save";
     }
-    @PostMapping("/member/save")
+    @PostMapping("/save")
     public String save(@ModelAttribute MemberDTO memberDTO){
         memberService.save(memberDTO);
-        return "";
+        return "redirect:memberPages/login";
+    }
+    @GetMapping("/login-form")
+    public String loginForm(){
+        return "memberPages/login";
     }
 
 }
