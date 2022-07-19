@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <th:block th:fragment="nav">
+        <div id="menu">
+            <div class="container">
+            <ul>
+                <li><a href="#">MENU1</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">MENU2</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">MENU3</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">MENU4</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">MENU5</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <style>
+            .promotionBanner { position:relative; overflow:hidden; text-align:center; background:rgb(4, 3, 102); }
+            .promotionBanner .bannerLink { display:block; }
+            .promotionBanner .btnClose { position:absolute; top:5px; left:50%; margin-left:590px; }
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            ul li{
+                list-style: none;
+            }
+            a {
+                text-decoration: none;
+                color:#333;
+            }
+
+            #menu {
+                font:bold 16px "malgun gothic";
+                width:700px;
+                height:50px;
+                background: #fff;
+                color:black;
+                line-height: 50px;
+                margin:0 auto;
+                text-align: center;
+            }
+
+            #menu > ul > li {
+                float:left;
+                width:140px;
+                position:relative;
+                z-index: 8;
+            }
+            #menu > ul > li > ul {
+                width:130px;
+                display:none;
+                position: absolute;
+                font-size:14px;
+                background: #fff;
+            }
+            #menu > ul > li:hover > ul {
+                display:block;
+
+            }
+            #menu > ul > li > ul > li:hover {
+                background: #eee;
+                transition: ease 1s;
+            }
+
+            .header{position:static; height:101px; }
+            .header_content{
+                margin-bottom: 50px;
+                background-color: #fff;
+                border-bottom: 1px solid #eee;
+            }
+            .header_content .content{display: flex;
+                justify-content: space-between;
+                padding: 20px 6px 20px 0px;
+                background-color: #fff;
+            }
+            .header_content .content h1{
+                display: block;
+                float: left;
+                height: 50%;
+            }
+            .header_content .content h1 img{
+                display: block;
+                width: auto;
+                height: 100%;
+                object-fit: contain;
+
+            }
+            .header_content .content h1 span{
+                font-weight: 300;
+                font-size: 16px;
+                color: #222;
+                letter-spacing: 0.313em;
+                line-height: 1.500em;
+            }
+            .header_content .content h1{
+                display: inline-flex;
+                align-items: flex-end;
+                height: 53px;
+            }
+            .header_content .content li {
+                display: flex;
+                align-items: center;
+            }
+            .header_content .content li{
+                margin-left: 44px;
+                margin-top: 2px;
+            }
+            .header_content .content li img{
+                width: 36px;
+                height: 36px;
+            }
+            .header_content .content li a span{
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                font-size: 13px;
+                color: #666;
+                line-height: 1.462em;
+                white-space: nowrap;
+                transform: translate(-50%, 0);
+            }
+            .header_content .content li{
+                margin-left: 44px;
+                margin-top: 2px;
+            }
+
+            .header_content .content li{
+                margin-left: 44px;
+                margin-top: 2px;
+            }
+            .header_content .content  li img{
+                width: 36px;
+                height: 36px;
+            }
+            .header_content .content  li a span{
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                font-size: 13px;
+                color: #666;
+                line-height: 1.462em;
+                white-space: nowrap;
+                transform: translate(-50%, 0);
+            }
+            .header_content .content  li{
+                margin-left: 44px;
+                margin-top: 2px;
+            }
+            .header_content .content  li img{
+                width: 36px;
+                height: 36px;
+            }
+            .header_content .content li a span{
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                font-size: 13px;
+                color: #666;
+                line-height: 1.462em;
+                white-space: nowrap;
+                transform: translate(-50%, 0);
+            }
+            .header_content .content li{
+                margin-left: 44px;
+                margin-top: 2px;
+            }
+            .header_content .content li a{
+                display: block;
+                position: relative;
+                padding-bottom: 19px;
+            }
+            .header_content .content li img{
+                width: 36px;
+                height: 36px;
+            }
+            .header_content .content li a span{
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                font-size: 13px;
+                color: #666;
+                line-height: 1.462em;
+                white-space: nowrap;
+                transform: translate(-50%, 0);
+            }
+            .header_content .content li li{
+                margin-left: 44px;
+                margin-top: 2px;
+            }
+            .headr_content .content li{
+                display: flex;
+                align-items: center;
+            }
+            .header_content .content{
+                display: flex;
+                justify-content: space-between;
+                padding: 30px 6px 25px 5px;
+                background-color: #fff;
+            }
+            .header_content{
+                margin-bottom: 50px;
+                background-color: #fff;
+                border-bottom: 1px solid #eee;
+            }
+            content, li {
+                list-style: none;
+            }
+            #container {
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+                z-index: 7;
+            }
+            .movieSelection_wrap{
+                position: relative;
+                height: 498px;
+                background-color: #000;
+                border-top: 2px solid #fb4357;
+            }
+            #container.content {
+                width: 980px;
+                height: 100%;
+                margin: 0 auto;
+            }
+        </style>
+    </th:block>
+</html>
