@@ -22,7 +22,7 @@ public class MemberEntity {
     private String memberId;
 
     @Column(length = 20)
-    private int memberPassword;
+    private String memberPassword;
 
     @Column
     private String memberName;

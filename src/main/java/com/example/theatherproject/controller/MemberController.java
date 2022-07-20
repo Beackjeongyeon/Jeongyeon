@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/member")
 @RequiredArgsConstructor
@@ -15,18 +17,34 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("/Save-form")
-    public String saveForm(){
+    public String saveForm() {
 
         return "/memberPages/save";
     }
+
     @PostMapping("/save")
-    public String save(@ModelAttribute MemberDTO memberDTO){
+    public String save(@ModelAttribute MemberDTO memberDTO) {
         memberService.save(memberDTO);
-        return "redirect:memberPages/login";
+        return "/index";
     }
+
     @GetMapping("/login-form")
-    public String loginForm(){
+    public String loginForm() {
+
         return "memberPages/login";
     }
 
+    @PostMapping("/login")
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+        MemberDTO loginResult = memberService.login(memberDTO);
+        if (loginResult != null) {
+            session.setAttribute("loginId", loginResult.getMemberId());
+            session.setAttribute("id", loginResult.getId());
+            return "index";
+        } else {
+            return "memberPages/login";
+        }
+
+
+    }
 }
