@@ -20,7 +20,7 @@ public class MemberService {
 
 
     public MemberDTO login(MemberDTO memberDTO) {
-        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberId(memberDTO.getMemberId());
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberPassword(memberDTO.getMemberPassword());
         if (optionalMemberEntity.isPresent()) {
             if (memberDTO.getMemberPassword().equals(optionalMemberEntity.get().getMemberPassword())) {
                 MemberDTO loginDTO = MemberDTO.toMemberDTO(optionalMemberEntity.get());

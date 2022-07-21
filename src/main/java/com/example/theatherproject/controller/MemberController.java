@@ -16,24 +16,26 @@ import javax.servlet.http.HttpSession;
 public class MemberController {
     private final MemberService memberService;
 
+    //회원가입 페이징 처리
     @GetMapping("/Save-form")
     public String saveForm() {
 
         return "/memberPages/save";
     }
 
+    //회원가입처리
     @PostMapping("/save")
     public String save(@ModelAttribute MemberDTO memberDTO) {
         memberService.save(memberDTO);
         return "/index";
     }
-
+    //로그인 페이징 처리
     @GetMapping("/login-form")
     public String loginForm() {
 
         return "memberPages/login";
     }
-
+    //로그인처리
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
@@ -46,5 +48,30 @@ public class MemberController {
         }
 
 
+    }
+    //마이페이지 페이징처리
+    @GetMapping("/My-page")
+    public String MyPage(){
+        return "memberPages/Mypage";
+    }
+    // 회원정보수정
+    @GetMapping("correction")
+    public String Correction(){
+        return "myPages/correction";
+    }
+    // 예약정보확인
+    @GetMapping("/confirm")
+    public String Confirm(){
+        return "myPages/confirm";
+    }
+    //나의문의내역
+    @GetMapping("/question")
+    public String question(){
+        return "myPages/question";
+    }
+    //회원 탈퇴
+    @GetMapping("/secession")
+    public String Secession(){
+        return "myPages/secession";
     }
 }
