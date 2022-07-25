@@ -47,37 +47,38 @@ public class MemberController {
         } else {
             return "memberPages/login";
         }
-
-
     }
-
     //마이페이지 페이징처리
     @GetMapping("/My-page")
     public String MyPage() {
+
         return "memberPages/Mypage";
     }
-
     // 회원정보수정
-    @GetMapping("correction")
-    public String Correction(HttpSession session, Model model) {
-        return "/memberPages/correction";
-    }
+    @GetMapping("update-form")
+    public String update(HttpSession session, Model model) {
 
+        return "memberPages/update";
+    }
     // 예약정보확인
-    @GetMapping("/confirm")
-    public String Confirm(HttpSession session, Model model) {
+    @GetMapping("/confirm-form")
+    public String Confirmform(HttpSession session, Model model) {
         return "/memberPages/confirm";
     }
-
     //나의문의내역
-    @GetMapping("/question")
-    public String question(HttpSession session, Model model) {
+    @GetMapping("/question-form")
+    public String questionform(HttpSession session, Model model) {
         return "/memberPages/question";
     }
-
     //회원 탈퇴
-    @GetMapping("/secession")
-    public String secession() {
+    @GetMapping("/secession-form")
+    public String secessionform() {
         return "/memberPages/secession";
+    }
+    @PostMapping("member/secession")
+    public String secession(HttpSession session,String pw){
+        String result= (String) session.getAttribute("pw");
+        System.out.println(result);
+        return "redirect:memberPages/Mypage";
     }
 }
