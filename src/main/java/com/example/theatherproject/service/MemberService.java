@@ -1,9 +1,11 @@
 package com.example.theatherproject.service;
+
 import com.example.theatherproject.dto.MemberDTO;
 import com.example.theatherproject.entity.MemberEntity;
 import com.example.theatherproject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.Optional;
 
 @Service
@@ -33,7 +35,6 @@ public class MemberService {
         }
 
     }
-
 }
 
 

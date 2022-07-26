@@ -26,7 +26,7 @@ public class MemberController {
     @PostMapping("/save")
     public String save(@ModelAttribute MemberDTO memberDTO) {
         memberService.save(memberDTO);
-        return "/index";
+        return "redirect:/";
     }
 
     //로그인 페이징 처리
@@ -38,15 +38,22 @@ public class MemberController {
 
     //로그인처리
     @PostMapping("/login")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null) {
             session.setAttribute("loginId", loginResult.getMemberId());
             session.setAttribute("id", loginResult.getId());
-            return "index";
+            return "redirect:/";
         } else {
             return "memberPages/login";
         }
+    }
+    //로그아웃처리
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("loginId");
+        session.removeAttribute("id");
+        return "redirect:/";
     }
     //마이페이지 페이징처리
     @GetMapping("/My-page")
@@ -56,29 +63,31 @@ public class MemberController {
     }
     // 회원정보수정
     @GetMapping("update-form")
-    public String update(HttpSession session, Model model) {
+    public String update() {
 
         return "memberPages/update";
     }
     // 예약정보확인
     @GetMapping("/confirm-form")
-    public String Confirmform(HttpSession session, Model model) {
+    public String Confirmform() {
+
         return "/memberPages/confirm";
     }
     //나의문의내역
     @GetMapping("/question-form")
-    public String questionform(HttpSession session, Model model) {
+    public String questionform( Model model) {
+
         return "/memberPages/question";
     }
     //회원 탈퇴
     @GetMapping("/secession-form")
     public String secessionform() {
+
         return "/memberPages/secession";
     }
     @PostMapping("member/secession")
-    public String secession(HttpSession session,String pw){
-        String result= (String) session.getAttribute("pw");
-        System.out.println(result);
-        return "redirect:memberPages/Mypage";
+    public String secession(String pw){
+        return "";
+
     }
 }
