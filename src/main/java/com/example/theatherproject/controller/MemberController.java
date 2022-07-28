@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
+
+import static java.nio.file.Files.getAttribute;
 
 @Controller
 @RequestMapping("/member")
@@ -81,13 +84,24 @@ public class MemberController {
     }
     //회원 탈퇴
     @GetMapping("/secession-form")
-    public String secessionform() {
-
+    public String secessionform(HttpSession session, Model model) {
         return "/memberPages/secession";
     }
-    @PostMapping("member/secession")
-    public String secession(String pw){
-        return "";
+    @PostMapping("/secession")
+    public String secession(HttpSession session,@RequestParam("memberPassword")String pwCheck){
+        Long id = (Long)session.getAttribute("id");
+        MemberDTO result= memberService.findById(id);
+        String pw = result.getMemberPassword();
+        System.out.println(pwCheck);
+        System.out.println("MemberController.secession");
+        System.out.println("session = " + session + ", pwCheck = " + pwCheck);
+        if(pw.equals(pwCheck)){
+            session.invalidate();
+            return "redirect:/";
+        }else{
+            return "redirect:/memberPages/secession";
+        }
+
 
     }
 }

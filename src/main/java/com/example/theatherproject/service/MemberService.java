@@ -1,6 +1,7 @@
 package com.example.theatherproject.service;
 
 import com.example.theatherproject.dto.MemberDTO;
+import com.example.theatherproject.entity.BoardEntity;
 import com.example.theatherproject.entity.MemberEntity;
 import com.example.theatherproject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,16 @@ public class MemberService {
             return null;
         }
 
+    }
+
+    public MemberDTO findById(Long id) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);
+        if(optionalMemberEntity.isPresent()){
+            MemberEntity result = optionalMemberEntity.get();
+            return MemberDTO.toMemberDTO(result);
+        }else{
+            return null;
+        }
     }
 }
 

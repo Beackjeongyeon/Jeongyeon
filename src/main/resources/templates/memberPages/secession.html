@@ -4,25 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<!--    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>-->
     <link rel="stylesheet" href="../../static/css/bootstrap2.css">
 </head>
 <body>
 
 <div class="form-group">
-    <form action="member/secession" method="post" name="deleteForm">
+    <form action="member/secession" method="post" >
         <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
         <input type="password" class="form-control" name="memberPassword" id="exampleInputPassword1" placeholder="Password">
-        <input type="button" th:onclick="delete()" value="회원탈퇴">
+        <input type="submit"  value="회원탈퇴">
+
     </form>
+<!--    <tr th:each="pw: ${pw}">-->
+<!--        <td th:text="${pw}"></td>-->
+<!--    </tr>-->
 </div>
 </body>
-<!--
-1.입력한 비밀번호와 로그인된 비밀전호 비교
-2.비교된 비밀번호가 같다면 입력한비밀번호값을 Entity 에서 찾아서
-비교
-3. 입력한비밀번호를 entity 에서 찾아서 해당객체 삭제
--->
+<!--    <script th:inline="javascript">-->
+<!--        const del = () =>{-->
+<!--            deleteForm.submit();-->
+<!--        }-->
+<!--        const idCheck =()=>{-->
+<!--            const pw1 = document.getElementById("memberPassword").value;-->
+<!--        }-->
+<!--        $.ajax({-->
+<!--            type: 'post',-->
+<!--            url:'/member/delete',-->
+<!--            data: {pw:<td th:text="${pw}"></td>},-->
+<!--            dataType:'String',-->
+<!--            success: function (result){-->
+<!--                if( result === "ok"){-->
+<!--                    if(pw == pw1){-->
+<!--                      alert("회원탈퇴가 완료되었습니다.");-->
+<!--                    }else{-->
+<!--                        alert("비밀번호가 일치하지않습니다.")-->
+<!--                    }-->
+<!--                }-->
+<!--            },-->
+<!--        });-->
+<!--        }-->
+
+
 
 
 </html>
