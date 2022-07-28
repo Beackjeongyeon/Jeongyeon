@@ -56,7 +56,10 @@ public class MemberController {
     }
     //마이페이지 페이징처리
     @GetMapping("/My-page")
-    public String MyPage() {
+    public String MyPage(HttpSession session, Model model) {
+        Long id= (Long)session.getAttribute("id");
+        MemberDTO result= memberService.findById(id);
+        model.addAttribute("result",result);
 
         return "memberPages/Mypage";
     }
