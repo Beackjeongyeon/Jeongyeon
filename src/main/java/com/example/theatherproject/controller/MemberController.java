@@ -6,11 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Member;
-
-import static java.nio.file.Files.getAttribute;
 
 @Controller
 @RequestMapping("/member")
@@ -96,6 +92,7 @@ public class MemberController {
         System.out.println("MemberController.secession");
         System.out.println("session = " + session + ", pwCheck = " + pwCheck);
         if(pw.equals(pwCheck)){
+            memberService.delete(id);
             session.invalidate();
             return "redirect:/";
         }else{
