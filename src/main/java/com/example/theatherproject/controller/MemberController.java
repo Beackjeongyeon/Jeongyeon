@@ -55,16 +55,14 @@ public class MemberController {
         return "redirect:/";
     }
     //마이페이지 페이징처리
-    @GetMapping("/My-page")
-    public String MyPage(HttpSession session, Model model) {
-        Long id= (Long)session.getAttribute("id");
-        MemberDTO result= memberService.findById(id);
-        model.addAttribute("result",result);
-
+    @GetMapping("/myPage{id}")
+    public String MyPage(@PathVariable("id")Long id,Model model) {
+        MemberDTO memberDTO = memberService.findById(id);
+        model.addAttribute("member",memberDTO);
         return "memberPages/Mypage";
     }
     // 회원정보수정
-    @GetMapping("update-form")
+    @GetMapping("update")
     public String update() {
 
         return "memberPages/update";

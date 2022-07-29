@@ -18,26 +18,16 @@
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/member/update-form">회원정보수정</a>
+          <a th:onclick="memberUpdate([[${}]])" class="nav-link" href="/member/update">회원정보수정</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/member/confirm-form">예약정보확인</a>
+          <a class="nav-link" href="/member/confirm">예약정보확인</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/member/question-form">나의문의내역</a>
+          <a class="nav-link" href="/member/question">나의문의내역</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/member/secession-form">회원탈퇴</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
         </li>
       </ul>
 

@@ -8,25 +8,6 @@
 </head>
 <body>
 <th:block th:replace="commonPages/mypageheader :: header"></th:block>
-<tr>
-    <th>회원번호</th>
-    <th>회원아이디</th>
-    <th>회원비밀번호</th>
-    <th>회원이름</th>
-    <th>회원나이</th>
-    <th>회원이메일주소</th>
-    <th>회원휴대폰번호</th>
-    <th>회원가입일자</th>
-</tr>
-<tr>
-    <td th:text="${result.id}"></td>
-    <td th:text="${result.memberId}"></td>
-    <td th:text="${result.memberPassword}"></td>
-    <td th:text="${result.memberName}"></td>
-    <td th:text="${result.memberAge}"></td>
-    <td th:text="${result.memberEmail}"></td>
-    <td th:text="${result.memberPhone}"></td>
-    <td th:text="${result.memberCreatedTime}"></td>
-</tr>
+
 </body>
 </html>

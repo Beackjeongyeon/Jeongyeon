@@ -1,101 +1,172 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="header">
-    <head>
+
         <title>Website menu 04</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" th:href="@{/css/header.css}">
 
-        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--    <section class="ftco-section">-->
+<!--        <div class="container">-->
+<!--            <div class="row justify-content-center">-->
+<!--                <div class="col-md-6 text-center mb-5">-->
+<!--                    <h2 class="heading-section">Website menu #04</h2>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <p th:text="${session.loginId}">로그인</p>-->
+<!--        <div class="container" style="height: 200px;">-->
+<!--            <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">-->
+<!--                <div class="container">-->
+<!--                    <a class="navbar-brand" href="index.html">Digital</a>-->
+<!--                    <div class="header_content">-->
+<!--                        <tr>-->
+<!--                            <td th:if="${session.loginId}">-->
+<!--                                <li>-->
+<!--                                    <a href="/member/logout">-->
+<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"-->
+<!--                                             alt="로그아웃">-->
+<!--                                        <span>로그아웃</span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </td>-->
+<!--                            <td th:unless="${session.loginId}">-->
+<!--                                <li>-->
+<!--                                    <a href="/member/login-form">-->
+<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"-->
+<!--                                             alt="로그인">-->
+<!--                                        <span>로그인</span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <li>-->
+<!--                                    <a href="/member/Save-form">-->
+<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png"-->
+<!--                                             alt="회원가입">-->
+<!--                                        <span>회원가입</span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </td>-->
+<!--                            <td th:if="${session.loginId}">-->
+<!--                                <li>-->
+<!--                                    <a th:onclick="memberMyPage([[${session.loginId}]])">-->
+<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png"-->
+<!--                                             alt="마이페이지">-->
+<!--                                        <span>마이페이지</span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <li>-->
+<!--                                    <a href="">-->
+<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png"-->
+<!--                                             alt="고객센터">-->
+<!--                                        <span>고객센터</span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </td>-->
+<!--                            <a href="/board/save-form"></a>-->
+<!--                        </tr>-->
+<!--                    </div>-->
+<!--                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"-->
+<!--                            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                        <span class="fa fa-bars"></span> Menu-->
+<!--                    </button>-->
 
-        <link rel="stylesheet" href="css/style.css">
+<!--                </div>-->
+<!--            </nav>-->
+<!--            &lt;!&ndash; END nav &ndash;&gt;-->
+<!--        </div>-->
 
-    </head>
-    <body>
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">Website menu #04</h2>
+<!--    </section>-->
+
+<!--    <script src="js/jquery.min.js"></script>-->
+<!--    <script src="js/popper.js"></script>-->
+<!--    <script src="js/bootstrap.min.js"></script>-->
+<!--    <script src="js/main.js"></script>-->
+
+<!--    </div>-->
+    <h1>
+        <div class="header">
+            <div class="header_content">
+                <div class="content">
+                    <h1>
+                        <image src="./bjy.png" alt="BJY"></image>
+                        <span>movie</span>
+                    </h1>
+                    <li>
+                        <a href="">
+                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그인">
+                            <span>로그인</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png" alt="회원가입">
+                            <span>회원가입</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="마이페이지">
+                            <span>마이페이지</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png" alt="고객센터">
+                            <span>고객센터</span>
+                        </a>
+                    </li>
                 </div>
             </div>
         </div>
-        <p th:text="${session.loginId}">로그인</p>
-        <div class="container" style="height: 200px;">
-            <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">
-                <div class="container">
-                    <a class="navbar-brand" href="index.html">Digital</a>
-                    <div class="header_content">
-                        <tr>
-                            <td th:if="${session.loginId}">
-                                <li>
-                                    <a href="/member/logout">
-                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"
-                                             alt="로그아웃">
-                                        <span>로그아웃</span>
-                                    </a>
-                                </li>
-                            </td>
-                            <td th:unless="${session.loginId}">
-                                <li>
-                                    <a href="/member/login-form">
-                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"
-                                             alt="로그인">
-                                        <span>로그인</span>
-                                    </a>
-                                </li>
-                            </td>
-                            <td>
-                                <li>
-                                    <a href="/member/Save-form">
-                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png"
-                                             alt="회원가입">
-                                        <span>회원가입</span>
-                                    </a>
-                                </li>
-                            </td>
-                            <td th:if="${session.loginId}">
-                                <li>
-                                    <a href="/member/My-page">
-                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png"
-                                             alt="마이페이지">
-                                        <span>마이페이지</span>
-                                    </a>
-                                </li>
-                            </td>
-                            <td>
-                                <li>
-                                    <a href="">
-                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png"
-                                             alt="고객센터">
-                                        <span>고객센터</span>
-                                    </a>
-                                </li>
-                            </td>
-                            <a href="/board/save-form"></a>
-                        </tr>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="fa fa-bars"></span> Menu
-                    </button>
-
-                </div>
-            </nav>
-            <!-- END nav -->
+        <div id="menu">
+            <ul>
+                <li><a href="#">MENU1</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">MENU2</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">MENU3</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">MENU4</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">MENU5</a>
+                    <ul>
+                        <li><a href="#">SUB_MENU</a></li>
+                        <li><a href="#">SUB_MENU2</a></li>
+                        <li><a href="#">SUB_MENU3</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
+    </h1>
 
-    </section>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-
-    </body>
-    </div>
 </th:block>
+
 
 </html>
