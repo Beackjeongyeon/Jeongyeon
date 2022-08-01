@@ -3,11 +3,445 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-<body>
+</head>
 <th:block th:replace="commonPages/header :: header"></th:block>
 <th:block th:replace="commonPages/nav :: #menu"></th:block>
+<link rel="stylesheet" th:href="@{/css/index.css}">
+      <body>
+<div id="container" class>
+    <input type="hidden" id="isOpenUserEmailYNPopup" name="isOpenUserEmailYNPopup" value="False">
+    <div id="ctl00_PlaceHolderContent_divMovieSelection_wrap" class="movieSelection_wrap">
+        <div class="contents">
+            <div class="video_wrap">
+                <video autoplay muted>
+                    <source src="https://adimg.cgv.co.kr/images/202207/grayman/grayman_1080x608.mp4" type="video/mp4">
+                </video>
+                <strong id="ctl00_PlaceHolderContent_AD_MOVIE_NM" class="movieSelection_title">그레이맨</strong>
+                <span id="ctl00_PlaceHolderContent_AD_DESCRIPTION_NM" class="movieSelection_txt">
+          "<어밴저스> 시리즈 감독"
+          <br>
+          "초대형 액션블록버스터"
+        </span>
+                <div class="movieSelection_video_controller_wrap">
+                    <a href="http://ad.cgv.co.kr/click/CGV/CGV_201401/main@MovieSelection2021?ads_id%3d47327%26creative_id%3d66984%26click_id%3d87357%26maid%3D%26event%3d"
+                       id="ctl00_PlaceHolderContent_AD_CLIP_DETAIL_URL" class="btn_movieSelection_detailView">상세보기</a>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+                    <a href="#none" id="ctl00_PlaceHolderContent_playStop" class="btn_movieSelection_playStop">stop</a>
+                    <a href="#none" id="ctl00_PlaceHolderContent_soundOnOff" class="btn_movieSelection_soundOnOff">Sound On</a>
+                    <input name="ctl00$PlaceHolderContent$AD_CNT_URL" type="hidden" id="ctl00_PlaceHolderContent_AD_CNT_URL" value="http://ad.cgv.co.kr/NetInsight/imp/CGV/CGV_201401/main@MovieSelection2021?ads_id%3d47327%26creative_id%3d66984">
+                    <script>
+                        var movieSelectionVideoObj = $('.video_wrap video')[0];
+                        $('.video_wrap video').on({
+                            ended:function(){
+                                $('.btn_movieSelection_playStop').removeClass('active');
+                            }
+                        })
+                        $('.btn_movieSelection_playStop').on({
+                            click:function(){
+                                if(movieSelectionVideoObj.paused){
+                                    movieSelectionVideoObj.play();
+                                    $(this).addClass('active');
+                                }else{
+                                    movieSelectionVideoObj.pause();
+                                    $(this).removeClass('active');
+                                }
+                            }
+                        });
+                        $('.btn_movieSelection_soundOnOff').on({
+                            click:function(){
+                                if(movieSelectionVideoObj.muted){
+                                    movieSelectionVideoObj.muted = false;
+                                    $(this).addClass('active');
+                                }else{
+                                    movieSelectionVideoObj.muted = true;
+                                    $(this).removeClass('active');
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">https, http  혼합사용시-->
+        <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/swiper.min.js" ></script>
+        <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/swiper-bundle.min.css" />
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                function startSlide(){
+                    theInterval = setInterval(NextSlide, 5000);
+                }
+
+                $("#btnMovie").click(function(){
+                    $("#movieChart_list").show();
+                    $("#movieChart_list_Reser").hide();
+                    $("#btn_allView_Movie").attr("href", "/movies/?lt=1&ft=0");
+                });
+
+                $("#btnReserMovie").click(function(){
+                    $("#movieChart_list").hide();
+                    $("#movieChart_list_Reser").show();
+                    $("#btn_allView_Movie").attr("href", "/movies/pre-movies.aspx");
+                });
+
+                var movieChartSwiper = new Swiper("#movieChart_list", {
+
+                    slidesPerView: 5,
+                    spaceBetween: 32,
+                    slidesPerGroup: 5,
+                    loopFillGroupWithBlank: true,
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+
+                        prevEl: ".swiper-button-prev",
+                    },
+                    a11y: {
+                        prevSlideMessage: '이전 슬라이드',
+                        nextSlideMessage: '다음 슬라이드',
+                        slideLabelMessage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
+                    },
+                });
+
+                var movieChartSwiper2 = new Swiper("#movieChart_list_Reser", {
+
+                    slidesPerView: 5,
+                    spaceBetween: 32,
+                    slidesPerGroup: 5,
+                    loopFillGroupWithBlank: true,
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+
+                        prevEl: ".swiper-button-prev",
+                    },
+                    a11y: {
+                        prevSlideMessage: '이전 슬라이드',
+                        nextSlideMessage: '다음 슬라이드',
+                        slideLabelMessopenPopupage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
+                    },
+                });
+                $('.movieChartBeScreen_btn_wrap a').on({
+                    click:function(e){
+                        var target = e.target;
+                        $(target).addClass('active').parent('h3').siblings().children('a').removeClass('active');
+
+                    }
+                });
+            });
+        </script>
+
+
+
+        <div class="movieChartBeScreen_wrap">
+
+            <div class="contents">
+                <div class="w3-content w3-section" style="size: cover;">
+                    <img class="mySlides" src="jmg/img.jpg" style="width: 100%">
+                    <img class="mySlides" src="jmg/202205241443547763_t.jpg" style="width:100%">
+                    <img class="mySlides" src="jmg/maxresdefault.jpg" style="width:100%">
+                    <img class="mySlides" src="jmg/maxresdefault (1).jpg" style="width:100%">
+                    <img class="mySlides" src="jmg/maxresdefault1.jpg" style="width:100%">
+                    <img class="mySlides" src="jmg/AAAABS4iDCJN_b6aFxJ-qNd10SOSehAeHn2pIcMA_Be8Uomreq5pvs9UMa17ItCLlf2rCL_MmNQilNczAQ9jY5HLk8JbUQYLQCgqdPCW.jpg" style="width:100%">
+                    <img class="mySlides" src="jmg/hansan.jpg" style="width:100%">
+                    <img class="mySlides" src="jmg/elbes.jpg" style="width:100%">
+                    <img class="mySlides" src="jmg/madong.jpg" style="width:100%">
+
+
+
+                </div>
+                <script>
+                    var myIndex = 0;
+                    carousel();
+
+                    function carousel() {
+                        var i;
+                        var x = document.getElementsByClassName("mySlides");
+                        for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";
+                        }
+                        myIndex++;
+                        if (myIndex > x.length) {myIndex = 1}
+                        x[myIndex-1].style.display = "block";
+                        setTimeout(carousel, 2000); // Change image every 2 seconds
+                    }
+                </script>
+
+                <div class="movieChartBeScreen_btn_wrap">
+
+
+
+                    <div class="tabBtn_wrap">
+
+                        <h3><a href="#none" class="active" id="btnMovie">무비차트</a></h3>
+
+                    </div>
+                    <a href="/movies/?lt=1&ft=0" id="btn_allView_Movie" class="btn_allView"></a>
+                </div>
+
+                <div class="swiper movieChart_list" id="movieChart_list">
+
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide swiper-slide-movie">
+
+                            <div class="img_wrap" data-scale="false">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000082/82120/82120_320.jpg" alt="탑건-매버릭" onerror="errorImage(this)">
+                                <div class="movieAgeLimit_wrap">
+                                    <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png" alt="12세 이상세">
+
+
+                                </div>
+                                <div class="screenType_wrap">
+
+                                    <i class="screenType"><img src="https://img.cgv.co.kr/R2014/images/common/logo/forDX_white.png" alt="forDX"></i>
+
+                                    <i class="screenType"><img src="https://img.cgv.co.kr/R2014/images/common/logo/screenx_white.png" alt="screenx"></i>
+
+                                </div>
+                                <div class="movieChart_btn_wrap">
+                                    <a href="/movies/detail-view/?midx=82120" onclick="gaEventLog('PC_메인', '무비차트_영화상세', '탑건-매버릭');" class="btn_movieChart_detail">상세보기</a>
+
+                                    <a href="/ticket/?MOVIE_CD=20029791&MOVIE_CD_GROUP=20020357" onclick="gaEventLog('PC_메인', '무비차트_예매하기','탑건-매버릭')" class='btn_movieChart_ticketing'>예매하기</a>
+
+
+                                </div>
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName">탑건-매버릭</strong>
+                                <span> <img src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldenegggreat.png' alt='Golden Egg great'> 99%</span>
+                                <span>예매율 31.6%</span>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide swiper-slide-movie">
+                            <div class="img_wrap" data-scale="false">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85999/85999_320.jpg" alt="토르-러브 앤 썬더" onerror="errorImage(this)">
+                                <div class="movieAgeLimit_wrap">
+                                    <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png" alt="12세 이상세">
+
+
+                                </div>
+                                <div class="screenType_wrap">
+
+                                    <i class="screenType"><img src="https://img.cgv.co.kr/R2014/images/common/logo/imax_white.png" alt="imax"></i>
+
+                                    <i class="screenType"><img src="https://img.cgv.co.kr/R2014/images/common/logo/forDX_white.png" alt="forDX"></i>
+
+                                    <i class="screenType"><img src="https://img.cgv.co.kr/R2014/images/common/logo/screenx_white.png" alt="screenx"></i>
+
+                                </div>
+                                <div class="movieChart_btn_wrap">
+                                    <a href="/movies/detail-view/?midx=85999" onclick="gaEventLog('PC_메인', '무비차트_영화상세', '토르-러브 앤 썬더');" class="btn_movieChart_detail">상세보기</a>
+
+                                    <a href="/ticket/?MOVIE_CD=20029998&MOVIE_CD_GROUP=20029913" onclick="gaEventLog('PC_메인', '무비차트_예매하기','토르-러브 앤 썬더')" class='btn_movieChart_ticketing'>예매하기</a>
+
+
+                                </div>
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName">토르-러브 앤 썬더</strong>
+                                <span> <img src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldenegggood.png' alt='Golden Egg good'> 80%</span>
+                                <span>예매율 18.6%</span>
+                            </div>
+                        </div>
+
+
+                        <div class="swiper-slide swiper-slide-movie">
+                            <div class="img_wrap" data-scale="false">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000083/83127/83127_320.jpg" alt="미니언즈2" onerror="errorImage(this)">
+                                <div class="movieAgeLimit_wrap">
+                                    <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-all.png" alt="전체세">
+                                    <div class='dDay_wrap'><span>6</span></div>
+                                </div>
+                                <div class="screenType_wrap">
+
+                                </div>
+                                <div class="movieChart_btn_wrap">
+                                    <a href="/movies/detail-view/?midx=83127" onclick="gaEventLog('PC_메인', '무비차트_영화상세', '미니언즈2');" class="btn_movieChart_detail">상세보기</a>
+
+                                    <a href="/ticket/?MOVIE_CD=20022752&MOVIE_CD_GROUP=20022752" onclick="gaEventLog('PC_메인', '무비차트_예매하기','미니언즈2')" class='btn_movieChart_ticketing'>예매하기</a>
+
+
+                                </div>
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName">미니언즈2</strong>
+                                <span> <img src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png' alt='Golden Egg Preegg'> 99%</span>
+                                <span>예매율 7.5%</span>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide swiper-slide-movie">
+                            <div class="img_wrap" data-scale="false">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86008/86008_320.jpg" alt="명탐정 코난-할로윈의 신부" onerror="errorImage(this)">
+                                <div class="movieAgeLimit_wrap">
+                                    <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png" alt="12세 이상세">
+
+
+                                </div>
+                                <div class="screenType_wrap">
+
+                                </div>
+                                <div class="movieChart_btn_wrap">
+                                    <a href="/movies/detail-view/?midx=86008" onclick="gaEventLog('PC_메인', '무비차트_영화상세', '명탐정 코난-할로윈의 신부');" class="btn_movieChart_detail">상세보기</a>
+
+                                    <a href="/ticket/?MOVIE_CD=20029955&MOVIE_CD_GROUP=20029955" onclick="gaEventLog('PC_메인', '무비차트_예매하기','명탐정 코난-할로윈의 신부')" class='btn_movieChart_ticketing'>예매하기</a>
+
+
+                                </div>
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName">명탐정 코난-할로윈의 신부</strong>
+                                <span> <img src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldenegggreat.png' alt='Golden Egg great'> 96%</span>
+                                <span>예매율 5.6%</span>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide swiper-slide-movie">
+                            <div class="img_wrap" data-scale="false">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85991/85991_320.jpg" alt="뒤틀린 집" onerror="errorImage(this)">
+                                <div class="movieAgeLimit_wrap">
+                                    <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" alt="15세 이상세">
+
+
+                                </div>
+                                <div class="screenType_wrap">
+
+                                </div>
+                                <div class="movieChart_btn_wrap">
+                                    <a href="/movies/detail-view/?midx=85991" onclick="gaEventLog('PC_메인', '무비차트_영화상세', '뒤틀린 집');" class="btn_movieChart_detail">상세보기</a>
+
+                                    <a href="/ticket/?MOVIE_CD=20029872&MOVIE_CD_GROUP=20029872" onclick="gaEventLog('PC_메인', '무비차트_예매하기','뒤틀린 집')" class='btn_movieChart_ticketing'>예매하기</a>
+
+
+                                </div>
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName">뒤틀린 집</strong>
+                                <span> <img src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldenegg.png' alt='Golden Egg '> 53%</span>
+                                <span>예매율 2.3%</span>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide swiper-slide-movie">
+                            <div class="img_wrap" data-scale="false">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86043/86043_320.jpg" alt="그레이 맨" onerror="errorImage(this)">
+                                <div class="movieAgeLimit_wrap">
+                                    <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" alt="15세 이상세">
+
+
+                                </div>
+                                <div class="screenType_wrap">
+
+                                </div>
+                                <div class="movieChart_btn_wrap">
+                                    <a href="/movies/detail-view/?midx=86043" onclick="gaEventLog('PC_메인', '무비차트_영화상세', '그레이 맨');" class="btn_movieChart_detail">상세보기</a>
+
+                                    <a href="/ticket/?MOVIE_CD=20030057&MOVIE_CD_GROUP=20030057" onclick="gaEventLog('PC_메인', '무비차트_예매하기','그레이 맨')" class='btn_movieChart_ticketing'>예매하기</a>
+
+
+                                </div>
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName">그레이 맨</strong>
+                                <span> <img src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldenegggreat.png' alt='Golden Egg great'> 95%</span>
+                                <span>예매율 2.3%</span>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide swiper-slide-movie">
+                            <div class="img_wrap" data-scale="false">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000083/83280/83280_320.jpg" alt="한산-용의 출현" onerror="errorImage(this)">
+                                <div class="movieAgeLimit_wrap">
+                                    <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png" alt="12세 이상세">
+                                    <div class='dDay_wrap'><span>13</span></div>
+
+                                </div>
+                                <div class="screenType_wrap">
+
+                                    <i class="screenType"><img src="https://img.cgv.co.kr/R2014/images/common/logo/imax_white.png" alt="imax"></i>
+
+                                    <i class="screenType"><img src="https://img.cgv.co.kr/R2014/images/common/logo/forDX_white.png" alt="forDX"></i>
+
+                                    <i class="screenType"><img src="https://img.cgv.co.kr/R2014/images/common/logo/screenx_white.png" alt="screenx"></i>
+
+                                </div>
+                                <div class="movieChart_btn_wrap">
+                                    <a href="/movies/detail-view/?midx=83280" onclick="gaEventLog('PC_메인', '무비차트_영화상세', '한산-용의 출현');" class="btn_movieChart_detail">상세보기</a>
+
+                                    <a href="/ticket/?MOVIE_CD=20023452&MOVIE_CD_GROUP=20023452" onclick="gaEventLog('PC_메인', '무비차트_예매하기','한산-용의 출현')" class='btn_movieChart_ticketing'>예매하기</a>
+
+
+                                </div>
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName">한산-용의 출현</strong>
+                                <span> <img src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png' alt='Golden Egg Preegg'> 99%</span>
+                                <span>예매율 2.3%</span>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide swiper-slide-movie">
+                            <div class="img_wrap" data-scale="false">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85950/85950_320.jpg" alt="엘비스" onerror="errorImage(this)">
+                                <div class="movieAgeLimit_wrap">
+                                    <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" alt="15세 이상세">
+
+
+                                </div>
+                                <div class="screenType_wrap">
+
+                                    <i class="screenType"><img src="https://img.cgv.co.kr/R2014/images/common/logo/screenx_white.png" alt="screenx"></i>
+
+                                </div>
+                                <div class="movieChart_btn_wrap">
+                                    <a href="/movies/detail-view/?midx=85950" onclick="gaEventLog('PC_메인', '무비차트_영화상세', '엘비스');" class="btn_movieChart_detail">상세보기</a>
+
+                                    <a href="/ticket/?MOVIE_CD=20029761&MOVIE_CD_GROUP=20029761" onclick="gaEventLog('PC_메인', '무비차트_예매하기','엘비스')" class='btn_movieChart_ticketing'>예매하기</a>
+
+
+                                </div>
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName">엘비스</strong>
+                                <span> <img src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldenegggreat.png' alt='Golden Egg great'> 95%</span>
+                                <span>예매율 2.0%</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-movie">
+                            <div class="img_wrap" data-scale="false">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85813/85813_320.jpg" alt="범죄도시 2" onerror="errorImage(this)">
+                                <div class="movieAgeLimit_wrap">
+                                    <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-15.png" alt="15세 이상세">
+
+
+                                </div>
+                                <div class="screenType_wrap">
+
+                                </div>
+                                <div class="movieChart_btn_wrap">
+                                    <a href="/movies/detail-view/?midx=85813" onclick="gaEventLog('PC_메인', '무비차트_영화상세', '범죄도시 2');" class="btn_movieChart_detail">상세보기</a>
+
+                                    <a href="/ticket/?MOVIE_CD=20029355&MOVIE_CD_GROUP=20029355" onclick="gaEventLog('PC_메인', '무비차트_예매하기','범죄도시 2')" class='btn_movieChart_ticketing'>예매하기</a>
+
+
+                                </div>
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName">범죄도시 2</strong>
+                                <span> <img src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldenegggreat.png' alt='Golden Egg great'> 98%</span>
+                                <span>예매율 0.3%</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
 </body>
+
 </html>

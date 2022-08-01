@@ -1,4 +1,6 @@
 /*dropdown 메뉴 css*/
+
+/*dropdown 메뉴 css*/
 * {
     margin: 0;
     padding: 0;
@@ -174,7 +176,7 @@ a {
     margin-left: 44px;
     margin-top: 2px;
 }
-.header_content .content li{
+.headr_content .content li{
     display: flex;
     align-items: center;
 }
@@ -189,7 +191,7 @@ a {
     background-color: #fff;
     border-bottom: 1px solid #eee;
 }
-.content, li {
+content, li {
     list-style: none;
 }
 #container {
@@ -198,24 +200,14 @@ a {
     width: 100%;
     z-index: 7;
 }
-.movieSelection_wrap {
+.movieSelection_wrap{
     position: relative;
     height: 498px;
     background-color: #000;
     border-top: 2px solid #fb4357;
 }
-
-body, input, textarea, select, button, table {
-    font-size: 13px;
-    line-height: 1.2;
-    color: #666;
-    font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
-    font-weight: 400;
-
-}
-#container {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    z-index: 7;
+#container.content {
+    width: 980px;
+    height: 100%;
+    margin: 0 auto;
 }
