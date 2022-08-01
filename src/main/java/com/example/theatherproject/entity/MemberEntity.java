@@ -24,6 +24,9 @@ public class MemberEntity {
     @Column(length = 20)
     private String memberPassword;
 
+    @Column(length = 20)
+    private String memberPassword2;
+
     @Column
     private String memberName;
 
@@ -43,6 +46,7 @@ public class MemberEntity {
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMemberId(memberDTO.getMemberId());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+        memberEntity.setMemberPassword2(memberDTO.getMemberPassword2());
         memberEntity.setMemberName(memberDTO.getMemberName());
         memberEntity.setMemberAge(memberDTO.getMemberAge());
         memberEntity.setMemberEmail(memberDTO.getMemberEmail());

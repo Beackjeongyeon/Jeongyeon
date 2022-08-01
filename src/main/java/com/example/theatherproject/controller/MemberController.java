@@ -1,11 +1,13 @@
 package com.example.theatherproject.controller;
 
+import com.example.theatherproject.dto.BoardDTO;
 import com.example.theatherproject.dto.MemberDTO;
 import com.example.theatherproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -47,56 +49,75 @@ public class MemberController {
             return "memberPages/login";
         }
     }
+
     //로그아웃처리
     @GetMapping("/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.removeAttribute("loginId");
         session.removeAttribute("id");
         return "redirect:/";
     }
     //마이페이지 페이징처리
-    @GetMapping("/myPage{id}")
-    public String MyPage(@PathVariable("id")Long id,Model model) {
+
+    @GetMapping("/myPage")
+    public String MyPage(HttpSession session, Model model) {
+        Long id = (Long) session.getAttribute("id");
         MemberDTO memberDTO = memberService.findById(id);
-        model.addAttribute("member",memberDTO);
+        model.addAttribute("member", memberDTO);
         return "memberPages/Mypage";
     }
+
+    @PostMapping("/Check")
+    public String Chek(String pw2 ,Model model ,HttpSession session) {
+        Long id = (Long) session.getAttribute("id");
+        MemberDTO memberDTO = memberService.findById(id);
+        String pw3 = memberDTO.getMemberPassword2();
+            model.addAttribute("result", pw3);
+            model.addAttribute("result2",pw2);
+            return "memberPages/Mypage";
+
+    }
+
     // 회원정보수정
     @GetMapping("update")
     public String update() {
 
         return "memberPages/update";
     }
+
     // 예약정보확인
     @GetMapping("/confirm-form")
     public String Confirmform() {
 
         return "/memberPages/confirm";
     }
+
     //나의문의내역
     @GetMapping("/question-form")
-    public String questionform( Model model) {
+    public String questionform(Model model) {
 
         return "/memberPages/question";
     }
+
     //회원 탈퇴
     @GetMapping("/secession-form")
     public String secessionform(HttpSession session, Model model) {
         return "/memberPages/secession";
     }
+
     @PostMapping("/secession")
-    public String secession(HttpSession session,@RequestParam("memberPassword")String pwCheck){
-        Long id = (Long)session.getAttribute("id");
-        MemberDTO result= memberService.findById(id);
+    public String secession(HttpSession session, @RequestParam("memberPassword") String pwCheck) {
+        Long id = (Long) session.getAttribute("id");
+        MemberDTO result = memberService.findById(id);
         String pw = result.getMemberPassword();
         System.out.println(pwCheck);
         System.out.println("MemberController.secession");
         System.out.println("session = " + session + ", pwCheck = " + pwCheck);
-        if(pw.equals(pwCheck)){
+        if (pw.equals(pwCheck)) {
             memberService.delete(id);
             session.invalidate();
             return "redirect:/";
-        }else{
+        } else {
             return "redirect:/memberPages/secession";
         }
 

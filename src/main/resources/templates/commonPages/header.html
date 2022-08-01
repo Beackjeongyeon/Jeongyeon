@@ -2,93 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="header">
 
-        <title>Website menu 04</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" th:href="@{/css/header.css}">
+    <title>Website menu 04</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 
-
-<!--    <section class="ftco-section">-->
-<!--        <div class="container">-->
-<!--            <div class="row justify-content-center">-->
-<!--                <div class="col-md-6 text-center mb-5">-->
-<!--                    <h2 class="heading-section">Website menu #04</h2>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <p th:text="${session.loginId}">로그인</p>-->
-<!--        <div class="container" style="height: 200px;">-->
-<!--            <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">-->
-<!--                <div class="container">-->
-<!--                    <a class="navbar-brand" href="index.html">Digital</a>-->
-<!--                    <div class="header_content">-->
-<!--                        <tr>-->
-<!--                            <td th:if="${session.loginId}">-->
-<!--                                <li>-->
-<!--                                    <a href="/member/logout">-->
-<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"-->
-<!--                                             alt="로그아웃">-->
-<!--                                        <span>로그아웃</span>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                            </td>-->
-<!--                            <td th:unless="${session.loginId}">-->
-<!--                                <li>-->
-<!--                                    <a href="/member/login-form">-->
-<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"-->
-<!--                                             alt="로그인">-->
-<!--                                        <span>로그인</span>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                            </td>-->
-<!--                            <td>-->
-<!--                                <li>-->
-<!--                                    <a href="/member/Save-form">-->
-<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png"-->
-<!--                                             alt="회원가입">-->
-<!--                                        <span>회원가입</span>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                            </td>-->
-<!--                            <td th:if="${session.loginId}">-->
-<!--                                <li>-->
-<!--                                    <a th:onclick="memberMyPage([[${session.loginId}]])">-->
-<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png"-->
-<!--                                             alt="마이페이지">-->
-<!--                                        <span>마이페이지</span>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                            </td>-->
-<!--                            <td>-->
-<!--                                <li>-->
-<!--                                    <a href="">-->
-<!--                                        <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png"-->
-<!--                                             alt="고객센터">-->
-<!--                                        <span>고객센터</span>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                            </td>-->
-<!--                            <a href="/board/save-form"></a>-->
-<!--                        </tr>-->
-<!--                    </div>-->
-<!--                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"-->
-<!--                            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--                        <span class="fa fa-bars"></span> Menu-->
-<!--                    </button>-->
-
-<!--                </div>-->
-<!--            </nav>-->
-<!--            &lt;!&ndash; END nav &ndash;&gt;-->
-<!--        </div>-->
-
-<!--    </section>-->
-
-<!--    <script src="js/jquery.min.js"></script>-->
-<!--    <script src="js/popper.js"></script>-->
-<!--    <script src="js/bootstrap.min.js"></script>-->
-<!--    <script src="js/main.js"></script>-->
-
-<!--    </div>-->
     <h1>
         <div class="header">
             <div class="header_content">
@@ -97,24 +15,44 @@
                         <image src="./bjy.png" alt="BJY"></image>
                         <span>movie</span>
                     </h1>
-                    <li>
-                        <a href="">
-                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그인">
-                            <span>로그인</span>
+                    <td th:if="${session.loginId}">
+                        <li>
+                            <a href="/member/logout">
+                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"
+                                     alt="로그아웃">
+                                <span>로그아웃</span>
+                            </a>
+                        </li>
+                    </td>
+                    <td th:unless="${session.loginId}">
+                        <li>
+                            <a href="/member/login-form">
+                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"
+                                     alt="로그인">
+                                <span>로그인</span>
+                            </a>
+                        </li>
                         </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png" alt="회원가입">
-                            <span>회원가입</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="마이페이지">
-                            <span>마이페이지</span>
-                        </a>
-                    </li>
+                        </li>
+
+                        <li>
+                            <a href="/member/Save-form">
+                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png"
+                                     alt="회원가입">
+                                <span>회원가입</span>
+                            </a>
+                        </li>
+                    </td>
+                    <td th:if="${session.loginId}">
+                        <li>
+                            <!--                            <a th:onclick="memberMyPage([[${session.loginId}]])">-->
+                            <a href="member/myPage">
+                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png"
+                                     alt="마이페이지">
+                                <span>마이페이지</span>
+                            </a>
+                        </li>
+                    </td>
                     <li>
                         <a href="">
                             <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png" alt="고객센터">
@@ -164,7 +102,6 @@
             </ul>
         </div>
     </h1>
-
 
 
 </th:block>

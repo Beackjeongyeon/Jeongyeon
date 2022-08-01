@@ -50,6 +50,8 @@ public class MemberService {
     public void delete(Long id) {
         memberRepository.deleteById(id);
     }
+
+
 }
 
 
