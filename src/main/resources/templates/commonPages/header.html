@@ -24,10 +24,10 @@
                             </a>
                         </li>
                     </td>
-                    <td th:unless="${session.loginId}">
+                    <td th:unless="${session.loginId} ">
                         <li>
-                            <a href="/member/login-form">
-                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"
+                            <a href="" onclick="memberlogin()">
+                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"
                                      alt="로그인">
                                 <span>로그인</span>
                             </a>
@@ -110,7 +110,12 @@
             </ul>
         </div>
     </h1>
-
+    <script>
+    function memberlogin(){var popupX = (document.body.offsetWidth / 2) - (200 / 2);
+        var popupY= (window.screen.height / 2) - (300 / 2);
+        window.open('/member/login-form', 'memberlogin', 'status=no, height=600, width=500, left='+ popupX + ', top='+ 200);
+    }
+    </script>
 
 </th:block>
 

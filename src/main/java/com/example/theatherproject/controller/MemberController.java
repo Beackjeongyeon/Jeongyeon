@@ -101,6 +101,7 @@ public class MemberController {
         return "/memberPages/secession";
     }
 
+
     @PostMapping("/secession")
     public String secession(HttpSession session, @RequestParam("memberPassword") String pwCheck) {
         Long id = (Long) session.getAttribute("id");
@@ -115,3 +116,4 @@ public class MemberController {
         }
     }
 }
+
