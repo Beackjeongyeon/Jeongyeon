@@ -60,22 +60,18 @@ public class MemberController {
     //마이페이지 페이징처리
 
     @GetMapping("/myPage")
-    public String MyPage(HttpSession session, Model model) {
-        Long id = (Long) session.getAttribute("id");
-        MemberDTO memberDTO = memberService.findById(id);
-        model.addAttribute("member", memberDTO);
-        return "memberPages/Mypage";
+    public String MyPage() {
+        return "memberPages/check";
     }
 
     @PostMapping("/Check")
-    public String Chek(String pw2 ,Model model ,HttpSession session) {
-        Long id = (Long) session.getAttribute("id");
-        MemberDTO memberDTO = memberService.findById(id);
-        String pw3 = memberDTO.getMemberPassword2();
-            model.addAttribute("result", pw3);
-            model.addAttribute("result2",pw2);
+    public String Check(@RequestParam("memberId") Long memberId, @RequestParam("memberPassword2") String memberPassword2) {
+        MemberDTO checkResult = memberService.Check(memberId, memberPassword2);
+        if (checkResult != null) {
             return "memberPages/Mypage";
-
+        } else {
+            return "memberPages/check";
+        }
     }
 
     // 회원정보수정
@@ -110,9 +106,6 @@ public class MemberController {
         Long id = (Long) session.getAttribute("id");
         MemberDTO result = memberService.findById(id);
         String pw = result.getMemberPassword();
-        System.out.println(pwCheck);
-        System.out.println("MemberController.secession");
-        System.out.println("session = " + session + ", pwCheck = " + pwCheck);
         if (pw.equals(pwCheck)) {
             memberService.delete(id);
             session.invalidate();
@@ -120,7 +113,5 @@ public class MemberController {
         } else {
             return "redirect:/memberPages/secession";
         }
-
-
     }
 }

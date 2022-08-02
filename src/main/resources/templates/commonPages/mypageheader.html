@@ -15,9 +15,6 @@
                     aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <tr th:each="result: ${result}">
-            <tr th:each="result2: ${result2}">
-                <td th:if="${result ==result2}">
                     <div class="collapse navbar-collapse" id="navbarColor03">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
@@ -40,12 +37,6 @@
             </tr>
         </div>
     </nav>
-    <td th:unless="${result != result2}">
-        <form action="member/Check" method="post">
-            2차비밀번호를 입력해주세요<input type="text" name="memberPassword2" placeholder="2차비밀번호">
-            <input type="submit" value="확인">
-        </form>
-    </td>
     </body>
 </th:block>
 </html>

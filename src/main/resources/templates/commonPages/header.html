@@ -45,8 +45,7 @@
                     </td>
                     <td th:if="${session.loginId}">
                         <li>
-                            <!--                            <a th:onclick="memberMyPage([[${session.loginId}]])">-->
-                            <a href="member/myPage">
+                            <a href="/member/myPage">
                                 <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png"
                                      alt="마이페이지">
                                 <span>마이페이지</span>
@@ -59,6 +58,15 @@
                             <span>고객센터</span>
                         </a>
                     </li>
+                    <td th:if="${session.loginId == 'admin' }">
+                        <li>
+                            <a href="/member/admin-form">
+                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png"
+                                     alt="관리자페이지">
+                                <span>관리자페이지</span>
+                            </a>
+                        </li>
+                    </td>
                 </div>
             </div>
         </div>

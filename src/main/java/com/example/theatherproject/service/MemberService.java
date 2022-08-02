@@ -39,10 +39,10 @@ public class MemberService {
 
     public MemberDTO findById(Long id) {
         Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);
-        if(optionalMemberEntity.isPresent()){
+        if (optionalMemberEntity.isPresent()) {
             MemberEntity result = optionalMemberEntity.get();
             return MemberDTO.toMemberDTO(result);
-        }else{
+        } else {
             return null;
         }
     }
@@ -52,6 +52,22 @@ public class MemberService {
     }
 
 
+    public MemberDTO Check(Long memberId, String memberPassword2) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(memberId);
+        MemberEntity memberEntity = new MemberEntity();
+        if (optionalMemberEntity.isPresent()) {
+            memberEntity = optionalMemberEntity.get();
+            if (memberEntity.getMemberPassword2().equals(memberPassword2)) {
+                MemberDTO checkDTO = MemberDTO.toPw2(memberEntity);
+                return checkDTO;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+
+    }
 }
 
 

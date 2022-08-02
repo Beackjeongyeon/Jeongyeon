@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/member/Check" method="post">
+    <input type="hidden" name="memberId" th:value="${session.id}">
+    2차비밀번호를 입력해주세요<input type="text" name="memberPassword2" required>
+    <button type="submit">2차비밀번호확인</button>
+</form>
+</body>
+</html>
