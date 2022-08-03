@@ -1,13 +1,10 @@
 package com.example.theatherproject.controller;
-
-import com.example.theatherproject.dto.BoardDTO;
 import com.example.theatherproject.dto.MemberDTO;
 import com.example.theatherproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -21,6 +18,10 @@ public class MemberController {
     public String saveForm() {
 
         return "/memberPages/save";
+    }
+    @GetMapping("/admin-form")
+    public String admin(){
+        return "/adminPages/admin";
     }
 
     //회원가입처리
@@ -75,10 +76,10 @@ public class MemberController {
     }
 
     // 회원정보수정
-    @GetMapping("update")
+    @GetMapping("/update")
     public String update() {
 
-        return "memberPages/update";
+        return "/memberPages/update";
     }
 
     // 예약정보확인
@@ -87,6 +88,7 @@ public class MemberController {
 
         return "/memberPages/confirm";
     }
+
 
     //나의문의내역
     @GetMapping("/question-form")
@@ -101,7 +103,6 @@ public class MemberController {
         return "/memberPages/secession";
     }
 
-
     @PostMapping("/secession")
     public String secession(HttpSession session, @RequestParam("memberPassword") String pwCheck) {
         Long id = (Long) session.getAttribute("id");
@@ -115,5 +116,8 @@ public class MemberController {
             return "redirect:/memberPages/secession";
         }
     }
+
 }
+
+
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap2.css}">
+  <style>
+    . title{
+      margin-left: 500px;
+
+    }
+  </style>
+</head>
+<body>
+<th:block th:replace="commonPages/adminheader :: header"></th:block>
+<div class="container">
+  <div name="title">
+<h1>공지작성</h1>
+</div>
+
+<form action="/notice/save" method="post" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="form-label mt-4">제목</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="제목을 입력 해주세요">
+    <small id="emailHelp" class="form-text text-muted">공지사항에 제목입니다.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleTextarea" class="form-label mt-4">내용</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+  <label for="formFile" class="form-label mt-4">Default file input example</label>
+  <input class="form-control" type="file" id="formFile">
+  </div>
+  <button type="button" class="btn btn-secondary">공지작성</button>
+</div>
+</form>
+</body>
+</html>
