@@ -28,13 +28,13 @@ public class NoticeEntity {
     @Column
     private int noticeHits;
 
-    public static NoticeEntity save(NoticeDTO noticeDTO, NoticeEntity noticeEntity){
-        NoticeEntity noticeEntity1 = new NoticeEntity();
-        noticeEntity1.setId(noticeDTO.getId());
-        noticeEntity1.setNoticeTitle(noticeDTO.getNoticeTitle());
-        noticeEntity1.setNoticeContents(noticeDTO.getNoticeContents());
-        noticeEntity1.setNoticeHits(noticeDTO.getNoticeHits());
-        noticeEntity1.setNoticeFileName(noticeDTO.getNoticeFileName());
+    public static NoticeEntity save(NoticeDTO noticeDTO){
+        NoticeEntity noticeEntity = new NoticeEntity();
+        noticeEntity.setId(noticeDTO.getId());
+        noticeEntity.setNoticeTitle(noticeDTO.getNoticeTitle());
+        noticeEntity.setNoticeContents(noticeDTO.getNoticeContents());
+        noticeEntity.setNoticeHits(noticeDTO.getNoticeHits());
+        noticeEntity.setNoticeFileName(noticeDTO.getNoticeFileName());
         return noticeEntity;
 
     }

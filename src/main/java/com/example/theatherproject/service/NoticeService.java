@@ -16,19 +16,21 @@ import java.util.Optional;
 public class NoticeService {
     private final NoticeRepository noticeRepository;
 
-    public Long save(NoticeDTO noticeDTO)throws IOException {
-        MultipartFile noticeFile= noticeDTO.getNoticeFile();
-        String noticeFileName= noticeFile.getOriginalFilename();
+    public Long save(NoticeDTO noticeDTO) throws IOException {
+        MultipartFile noticeFile = noticeDTO.getNoticeFile();
+        String noticeFileName = noticeFile.getOriginalFilename();
         noticeFileName = System.currentTimeMillis() + "_" + noticeFileName;
         String savePath = "D:\\notice_img\\" + noticeFileName;
-        if(!noticeFile.isEmpty()){
+        if (!noticeFile.isEmpty()) {
             noticeFile.transferTo(new File(savePath));
-        }noticeDTO.setNoticeFileName(noticeFileName);
+        }
+       noticeDTO.setNoticeFileName(noticeFileName);
+
         Optional<NoticeEntity> optionalNoticeEntity =
-        noticeRepository.findByNoticeTitle(noticeDTO.getNoticeTitle());
-        if(optionalNoticeEntity.isEmpty()){
+                noticeRepository.findById(noticeDTO.getId());
+        if(optionalNoticeEntity.isPresent()){
             NoticeEntity noticeEntity= optionalNoticeEntity.get();
-            Long saveId= NoticeRepository.save(NoticeEntity.save(noticeDTO,noticeEntity)).getId();
+            Long saveId = noticeRepository.save(NoticeEntity.save(noticeDTO)).getId();
             return saveId;
         }else{
             return null;
