@@ -30,14 +30,6 @@ public class MemberController {
         memberService.save(memberDTO);
         return "redirect:/";
     }
-
-    //로그인 페이징 처리
-    @GetMapping("/login-form")
-    public String loginForm() {
-
-        return "memberPages/login";
-    }
-
     //로그인처리
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
@@ -47,7 +39,7 @@ public class MemberController {
             session.setAttribute("id", loginResult.getId());
             return "redirect:/";
         } else {
-            return "memberPages/login";
+            return "redirect:/";
         }
     }
 

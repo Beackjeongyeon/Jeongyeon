@@ -6,13 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/modal.css}">
 
     <h1>
         <div class="header">
             <div class="header_content">
                 <div class="content">
                     <h1>
-                        <image src="./bjy.png" alt="BJY"></image>
+                        BJY
                         <span>movie</span>
                     </h1>
                     <td th:if="${session.loginId}">
@@ -26,9 +27,11 @@
                     </td>
                     <td th:unless="${session.loginId} ">
                         <li>
-                            <a href="" onclick="memberlogin()">
+                            <div id="wrap">
+                                <a href="javascript:openModal('modal1');" class="button modal-open">
+                            </div>
                             <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"
-                                     alt="로그인">
+                                     alt="로그인" >
                                 <span>로그인</span>
                             </a>
                         </li>
@@ -53,7 +56,7 @@
                         </li>
                     </td>
                     <li>
-                        <a href="/question/save">
+                        <a href="/question/question">
                             <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png" alt="고객센터">
                             <span>1:1문의하기</span>
                         </a>
@@ -110,11 +113,75 @@
             </ul>
         </div>
     </h1>
+    <div id="modal"></div>
+    <div class="modal-con modal1">
+        <a href="javascript:;" class="close">X</a>
+
+        <p class="title">BJy movie</p>
+        <h2 class="title">로그인 </h2>
+        <div class="body">
+        </div>
+            <form action="/member/login" method="post">
+        <div class="form-login">
+            <div class="input-textlogin width-max">
+                <input type="text" placeholder="아이디" id="username" name="memberId" required>
+            </div>
+            <div class="form-password">
+                <div class="input-textpassword width-max">
+                    <input type="text" placeholder="비밀번호" id="userpassword" name="memberPassword" required>
+                </div>
+            </div>
+        </div>
+        <button class="button1" type="submit">
+            "로그인"
+        </button>
+        </form>
+
+        <div class="inp_chk"> <!-- 체크시 checked 추가 -->
+            <input type="checkbox" id="keepLogin" class="inp_radio"  name="keepLogin">
+            <label for="keepLogin" class="lab_g">
+                <span class="img_top ico_check"></span>
+                <span class="txt_lab">로그인 상태 유지</span>
+            </label>
+            <span class="txt_find">
+                      <span class="txt_find">
+                        <a href="" class="link_find">아이디</a>
+                         /
+                        <a href="" class="link_find">비밀번호 찾기</a>
+                      </span>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<!--    <script>-->
+<!--    function memberlogin(){var popupX = (document.body.offsetWidth / 2) - (200 / 2);-->
+<!--        var popupY= (window.screen.height / 2) - (300 / 2);-->
+<!--        window.open('/member/login-form', 'memberlogin', 'status=no, height=600, width=500, left='+ popupX + ', top='+ 200);-->
+<!--    }-->
+<!--    </script>-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-    function memberlogin(){var popupX = (document.body.offsetWidth / 2) - (200 / 2);
-        var popupY= (window.screen.height / 2) - (300 / 2);
-        window.open('/member/login-form', 'memberlogin', 'status=no, height=600, width=500, left='+ popupX + ', top='+ 200);
-    }
+        function openModal(modalname){
+            document.get
+            $("#modal").fadeIn(300);
+            $("."+modalname).fadeIn(300);
+            document.body.style.overflow="hidden";
+
+
+        }
+
+        $("#modal, .close").on('click',function(){
+            $("#modal").fadeOut(300);
+            $(".modal-con").fadeOut(300);
+            document.body.style.overflow="unset";
+        });
+
+
+
+
     </script>
 
 </th:block>

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/question")
 public class QuestionController {
 
-    @GetMapping("/save")
+    @GetMapping("/question")
     public String question(){
-        return "questionPages/save";
+        return "questionPages/question";
     }
 }

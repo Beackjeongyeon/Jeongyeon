@@ -31,18 +31,21 @@
 }
 a.button{
     display:inline-block;
-    padding: 10px 20px;
     text-decoration:none;
-    color:#fff;
-    background:#000;
-    margin:20px;}
+    color:#000;
+    background:#fff;
+    font-size: 17px;
+}
+
 #modal{
     display:none;
     position:center;
     width:100%; height:100%;
     top:0; left:0;
-    background:rgba(0,0,0,0.3);
+    background:rgba(90, 21, 21, 0);
+    z-index: 1000;
 }
+
 .modal-con{
 
     width: 290px;
@@ -53,13 +56,14 @@ a.button{
     padding: 20px;
     max-width: 40%;
     min-height: 50%;
-    background:#fff;
+    background:#f1f1f0;
+    z-index: 1010;
 }
 .modal-con .title{
     text-align: center;
     font-size:20px;
     padding: 20px;
-    background : #fff;
+    background : #f1f1f0;
 }
 .modal-con .con{
     font-size:15px; line-height:1.3;
