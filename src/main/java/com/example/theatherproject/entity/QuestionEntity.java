@@ -20,14 +20,20 @@ public class QuestionEntity {
     private LocalDateTime questionCreatedTime;
 
     @Column
+    private String questionTitle;
+
+    @Column
     private String questionContents;
 
     @Column
     private String questionAnswer;
 
+
+
     public static QuestionEntity save(QuestionDTO questionDTO){
         QuestionEntity questionEntity = new QuestionEntity();
         questionEntity.setId(questionDTO.getId());
+        questionEntity.setQuestionTitle(questionEntity.getQuestionTitle());
         questionEntity.setQuestionCreatedTime(questionDTO.getQuestionCreatedTime());
         questionEntity.setQuestionContents(questionDTO.getQuestionContents());
         questionEntity.setQuestionAnswer(questionDTO.getQuestionAnswer());

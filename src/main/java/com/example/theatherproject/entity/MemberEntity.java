@@ -7,9 +7,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 @Table(name = "member_table")
 public class MemberEntity {
 
@@ -18,7 +21,7 @@ public class MemberEntity {
     @Column
     private Long id;
 
-    @Column(length =20)
+    @Column(length = 20)
     private String memberId;
 
     @Column(length = 20)
@@ -42,7 +45,9 @@ public class MemberEntity {
     @Column
     private LocalDateTime memberCreatedTime;
 
-    public static MemberEntity save(MemberDTO memberDTO){
+
+
+    public static MemberEntity save(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMemberId(memberDTO.getMemberId());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
