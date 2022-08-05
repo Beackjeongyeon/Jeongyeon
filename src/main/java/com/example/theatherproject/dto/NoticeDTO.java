@@ -19,12 +19,5 @@ public class NoticeDTO {
     private LocalDateTime createdTime;
     private int noticeHits;
 
-    public NoticeDTO(String noticeTitle, String noticeContents, String noticeFileName, MultipartFile noticeFile, LocalDateTime createdTime, int noticeHits) {
-        this.noticeTitle = noticeTitle;
-        this.noticeContents = noticeContents;
-        this.noticeFileName = noticeFileName;
-        this.noticeFile = noticeFile;
-        this.createdTime = createdTime;
-        this.noticeHits = noticeHits;
-    }
+
 }

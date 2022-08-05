@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter@Setter
-@Table(name = "notice")
+@Table(name = "notice_table")
 public class NoticeEntity {
 
     @Id

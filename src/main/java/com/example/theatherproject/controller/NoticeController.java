@@ -24,8 +24,9 @@ public class NoticeController {
     }
     @PostMapping("/save")
     public String save(@ModelAttribute NoticeDTO noticeDTO) throws IOException {
+        System.out.println("noticeDTO = " + noticeDTO);
         noticeService.save(noticeDTO);
-        return "redirect:noticePages/notice";
+        return "noticePages/notice";
     }
 }
 

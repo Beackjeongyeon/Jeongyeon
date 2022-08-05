@@ -24,16 +24,8 @@ public class NoticeService {
         if (!noticeFile.isEmpty()) {
             noticeFile.transferTo(new File(savePath));
         }
-       noticeDTO.setNoticeFileName(noticeFileName);
-
-        Optional<NoticeEntity> optionalNoticeEntity =
-                noticeRepository.findById(noticeDTO.getId());
-        if(optionalNoticeEntity.isPresent()){
-            NoticeEntity noticeEntity= optionalNoticeEntity.get();
-            Long saveId = noticeRepository.save(NoticeEntity.save(noticeDTO)).getId();
-            return saveId;
-        }else{
-            return null;
-        }
+      noticeDTO.setNoticeFileName(noticeFileName);
+        NoticeEntity noticeEntity = NoticeEntity.save(noticeDTO);
+        return noticeRepository.save(noticeEntity).getId();
     }
 }
