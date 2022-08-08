@@ -11,10 +11,10 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class QuestionService {
-    private QuestionRepository questionRepository;
+    private final QuestionRepository questionRepository;
     public Long save(QuestionDTO questionDTO) {
        QuestionEntity questionEntity = QuestionEntity.save(questionDTO);
-       return questionRepository.save(questionEntity).getId();
+        return questionRepository.save(questionEntity).getId();
 
     }
 

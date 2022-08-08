@@ -21,7 +21,7 @@
                             <a href="/member/logout">
                                 <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"
                                      alt="로그아웃">
-                                <span>로그아웃</span>
+                                <span th:onclick="index()">로그아웃</span>
                             </a>
                         </li>
                     </td>
@@ -178,6 +178,9 @@
             $(".modal-con").fadeOut(300);
             document.body.style.overflow="unset";
         });
+        const index = () =>{
+            location.href="/"
+        }
 
 
 

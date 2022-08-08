@@ -33,7 +33,7 @@ public class QuestionEntity {
     public static QuestionEntity save(QuestionDTO questionDTO){
         QuestionEntity questionEntity = new QuestionEntity();
         questionEntity.setId(questionDTO.getId());
-        questionEntity.setQuestionTitle(questionEntity.getQuestionTitle());
+        questionEntity.setQuestionTitle(questionDTO.getQuestionTitle());
         questionEntity.setQuestionCreatedTime(questionDTO.getQuestionCreatedTime());
         questionEntity.setQuestionContents(questionDTO.getQuestionContents());
         questionEntity.setQuestionAnswer(questionDTO.getQuestionAnswer());

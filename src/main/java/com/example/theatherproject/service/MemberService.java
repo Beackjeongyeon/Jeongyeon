@@ -17,6 +17,8 @@ public class MemberService {
 
     public Long save(MemberDTO memberDTO) {
         MemberEntity memberEntity = MemberEntity.save(memberDTO);
+        System.out.println("MemberService.save");
+        System.out.println("memberDTO = " + memberDTO);
         return memberRepository.save(memberEntity).getId();
 
     }
