@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap2.css}">
+</head>
+<body>
+<th:block th:replace="commonPages/mypageheader :: header"></th:block>
+</body>
+<table class="table table-hover">
+  <thead>
+  <tr class="table-dark">
+    <th scope="row">순번</th>
+    <td>문의제목</td>
+    <td>작성자</td>
+    <td>문의내용</td>
+    <td>답변</td>
+  </tr>
+  </thead>
+  <tr th:each="result: ${result}">
+    <td th:text="${result.id}"></td>
+    <td th:text="${result.member_Name}"></td>
+    <td th:text="${result.questionTitle}"></td>
+    <td th:text="${result.questionContents}"></td>
+    <td th:if="${result.questionAnswer}"></td>
+  </tr>
+</table>
+</html>

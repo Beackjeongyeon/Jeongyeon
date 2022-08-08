@@ -35,7 +35,7 @@ public class MemberController {
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null) {
-            session.setAttribute("loginId", loginResult.getMemberId());
+            session.setAttribute("loginId", loginResult.getUserId());
             session.setAttribute("id", loginResult.getId());
             return "redirect:/";
         } else {

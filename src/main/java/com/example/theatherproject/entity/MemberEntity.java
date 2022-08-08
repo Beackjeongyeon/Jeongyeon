@@ -14,15 +14,15 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "member_table")
-public class MemberEntity {
+public class MemberEntity extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name ="member_Id")
     private Long id;
 
     @Column(length = 20)
-    private String memberId;
+    private String userId;
 
     @Column(length = 20)
     private String memberPassword;
@@ -30,7 +30,7 @@ public class MemberEntity {
     @Column(length = 20)
     private String memberPassword2;
 
-    @Column
+    @Column(name ="member_Name")
     private String memberName;
 
     @Column
@@ -46,10 +46,17 @@ public class MemberEntity {
     private LocalDateTime memberCreatedTime;
 
 
+    @OneToMany(mappedBy = "memberEntity",
+            cascade = CascadeType.REMOVE,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
+    private List<QuestionEntity> questionList = new ArrayList<>();
+
+
 
     public static MemberEntity save(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();
-        memberEntity.setMemberId(memberDTO.getMemberId());
+        memberEntity.setUserId(memberDTO.getUserId());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setMemberPassword2(memberDTO.getMemberPassword2());
         memberEntity.setMemberName(memberDTO.getMemberName());

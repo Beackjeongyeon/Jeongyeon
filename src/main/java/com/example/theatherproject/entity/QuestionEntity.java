@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter@Setter
 @Table(name = "question_table")
 public class QuestionEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -28,11 +29,16 @@ public class QuestionEntity {
     @Column
     private String questionAnswer;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_Id")
+    private MemberEntity memberEntity;
 
 
-    public static QuestionEntity save(QuestionDTO questionDTO){
+
+    public static QuestionEntity save(QuestionDTO questionDTO, MemberEntity memberEntity){
         QuestionEntity questionEntity = new QuestionEntity();
         questionEntity.setId(questionDTO.getId());
+        questionEntity.setMemberEntity(memberEntity);
         questionEntity.setQuestionTitle(questionDTO.getQuestionTitle());
         questionEntity.setQuestionCreatedTime(questionDTO.getQuestionCreatedTime());
         questionEntity.setQuestionContents(questionDTO.getQuestionContents());

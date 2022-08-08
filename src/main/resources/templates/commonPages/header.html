@@ -31,8 +31,8 @@
                                 <a href="javascript:openModal('modal1');" class="button modal-open">
                             </div>
                             <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png"
-                                     alt="로그인" >
-                                <span>로그인</span>
+                                 alt="로그인">
+                            <span>로그인</span>
                             </a>
                         </li>
                         </a>
@@ -49,18 +49,21 @@
                     <td th:if="${session.loginId}">
                         <li>
                             <a href="/member/myPage">
-                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png"
-                                     alt="마이페이지">
-                                <span>마이페이지</span>
+                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png"
+                                 alt="마이페이지">
+                            <span>마이페이지</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/question/question">
+                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png" alt="고객센터">
+                                <span>1:1문의하기</span>
                             </a>
                         </li>
                     </td>
-                    <li>
-                        <a href="/question/question">
-                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginCustomer.png" alt="고객센터">
-                            <span>1:1문의하기</span>
-                        </a>
-                    </li>
+                    <td th:unless="${session.loginId} ">
+
+                    </td>
                     <td th:if="${session.loginId == 'admin' }">
                         <li>
                             <a href="/member/admin-form">
@@ -121,24 +124,24 @@
         <h2 class="title">로그인 </h2>
         <div class="body">
         </div>
-            <form action="/member/login" method="post">
-        <div class="form-login">
-            <div class="input-textlogin width-max">
-                <input type="text" placeholder="아이디" id="username" name="memberId" required>
-            </div>
-            <div class="form-password">
-                <div class="input-textpassword width-max">
-                    <input type="text" placeholder="비밀번호" id="userpassword" name="memberPassword" required>
+        <form action="/member/login" method="post">
+            <div class="form-login">
+                <div class="input-textlogin width-max">
+                    <input type="text" placeholder="아이디" id="username" name="userId" required>
+                </div>
+                <div class="form-password">
+                    <div class="input-textpassword width-max">
+                        <input type="text" placeholder="비밀번호" id="userpassword" name="memberPassword" required>
+                    </div>
                 </div>
             </div>
-        </div>
-        <button class="button1" type="submit">
-            로그인
-        </button>
+            <button class="button1" type="submit">
+                로그인
+            </button>
         </form>
 
         <div class="inp_chk"> <!-- 체크시 checked 추가 -->
-            <input type="checkbox" id="keepLogin" class="inp_radio"  name="keepLogin">
+            <input type="checkbox" id="keepLogin" class="inp_radio" name="keepLogin">
             <label for="keepLogin" class="lab_g">
                 <span class="img_top ico_check"></span>
                 <span class="txt_lab">로그인 상태 유지</span>
@@ -156,35 +159,30 @@
     </div>
     </div>
     </div>
-<!--    <script>-->
-<!--    function memberlogin(){var popupX = (document.body.offsetWidth / 2) - (200 / 2);-->
-<!--        var popupY= (window.screen.height / 2) - (300 / 2);-->
-<!--        window.open('/member/login-form', 'memberlogin', 'status=no, height=600, width=500, left='+ popupX + ', top='+ 200);-->
-<!--    }-->
-<!--    </script>-->
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function openModal(modalname){
+        function openModal(modalname) {
             document.get
             $("#modal").fadeIn(300);
-            $("."+modalname).fadeIn(300);
-            document.body.style.overflow="hidden";
+            $("." + modalname).fadeIn(300);
+            document.body.style.overflow = "hidden";
 
 
         }
 
-        $("#modal, .close").on('click',function(){
+        $("#modal, .close").on('click', function () {
             $("#modal").fadeOut(300);
             $(".modal-con").fadeOut(300);
-            document.body.style.overflow="unset";
+            document.body.style.overflow = "unset";
         });
-        const index = () =>{
-            location.href="/"
+
+        const index = () => {
+            location.href = "/"
+
+
         }
-
-
-
-
     </script>
 
 </th:block>

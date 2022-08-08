@@ -5,10 +5,9 @@ import com.example.theatherproject.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/question")
@@ -18,13 +17,17 @@ public class QuestionController {
 
     @GetMapping("/question")
     public String question(){
-        return "questionPages/question";
+        return "questionPages/save";
     }
     @PostMapping("/save")
-    public String save(@ModelAttribute QuestionDTO questionDTO , Model model){
-       Long result=questionService.save(questionDTO);
-       QuestionDTO result1= questionService.findById(result);
-       model.addAttribute("result",result1);
-        return "questionPages/question";
+    public String save(HttpSession session,@ModelAttribute QuestionDTO questionDTO){
+        Long result = questionService.save(questionDTO);
+        System.out.println(result);
+       return "redirect:/";
     }
+    @GetMapping("/list")
+    public String list(Model model,QuestionDTO questionDTO){
+        questionService.findById(questionDTO.getMemberId());
+    }
+
 }

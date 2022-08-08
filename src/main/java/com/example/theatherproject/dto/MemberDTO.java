@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class MemberDTO {
 
     private Long id;
-    private String memberId;
+    private String userId;
     private String memberPassword;
 
     private String memberPassword2;
@@ -23,8 +23,8 @@ public class MemberDTO {
     private String memberPhone;
     private LocalDateTime memberCreatedTime;
 
-    public MemberDTO(String memberId, String memberPassword, String memberPassword2, String memberName, int memberAge, String memberEmail, String memberPhone, LocalDateTime memberCreatedTime) {
-        this.memberId = memberId;
+    public MemberDTO(String userId, String memberPassword, String memberPassword2, String memberName, int memberAge, String memberEmail, String memberPhone, LocalDateTime memberCreatedTime) {
+        this.userId = userId;
         this.memberPassword = memberPassword;
         this.memberPassword2 = memberPassword2;
         this.memberName = memberName;
@@ -37,7 +37,7 @@ public class MemberDTO {
     public static MemberDTO toMemberDTO(MemberEntity memberEntity){
         MemberDTO memberDTO = new MemberDTO();
         memberDTO.setId(memberEntity.getId());
-        memberDTO.setMemberId(memberEntity.getMemberId());
+        memberDTO.setUserId(memberEntity.getUserId());
         memberDTO.setMemberPassword(memberEntity.getMemberPassword());
         memberDTO.setMemberPassword2(memberEntity.getMemberPassword2());
         memberDTO.setMemberName(memberEntity.getMemberName());
