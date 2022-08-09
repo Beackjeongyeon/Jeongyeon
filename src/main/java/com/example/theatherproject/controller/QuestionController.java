@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/question")
@@ -20,14 +21,18 @@ public class QuestionController {
         return "questionPages/save";
     }
     @PostMapping("/save")
-    public String save(HttpSession session,@ModelAttribute QuestionDTO questionDTO){
+    public String save(@ModelAttribute QuestionDTO questionDTO){
         Long result = questionService.save(questionDTO);
         System.out.println(result);
        return "redirect:/";
     }
     @GetMapping("/list")
-    public String list(Model model,QuestionDTO questionDTO){
-        questionService.findById(questionDTO.getMemberId());
+    public String list(@ModelAttribute QuestionDTO questionDTO,Model model){
+        List<QuestionDTO> questionDTOList= questionService.findAll();
+        model.addAttribute("result", questionDTOList);
+        return "questionPages/list";
     }
 
-}
+    }
+
+

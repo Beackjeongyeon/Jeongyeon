@@ -12,18 +12,19 @@
   <thead>
   <tr class="table-dark">
     <th scope="row">순번</th>
+    <td>문의날짜</td>
     <td>문의제목</td>
-    <td>작성자</td>
     <td>문의내용</td>
     <td>답변</td>
   </tr>
   </thead>
   <tr th:each="result: ${result}">
     <td th:text="${result.id}"></td>
-    <td th:text="${result.member_Name}"></td>
+    <td th:text="*{#temporals.format(result.createdTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
     <td th:text="${result.questionTitle}"></td>
     <td th:text="${result.questionContents}"></td>
-    <td th:if="${result.questionAnswer}"></td>
+    <td th:text="${result.questionAnswer}"></td>
+
   </tr>
 </table>
 </html>

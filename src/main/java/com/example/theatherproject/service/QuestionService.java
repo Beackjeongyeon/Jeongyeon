@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.engine.spi.ManagedEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,8 +34,13 @@ public class QuestionService {
 
     }
 
-    public QuestionDTO findById(Long memberId) {
-         Optional<QuestionEntity> optionalQuestionEntity = questionRepository.findById(memberId);
 
+    @Transactional
+    public List<QuestionDTO> findAll() {
+         List<QuestionEntity> questionEntityList= questionRepository.findAll();
+          List<QuestionDTO> questionDTOList= new ArrayList<>();
+          for(QuestionEntity questionEntity: questionEntityList){
+              questionDTOList.add(QuestionDTO.toQuestionDTO(questionEntity));
+          }return questionDTOList;
     }
 }
