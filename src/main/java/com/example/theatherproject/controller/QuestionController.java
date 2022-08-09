@@ -24,7 +24,7 @@ public class QuestionController {
     public String save(@ModelAttribute QuestionDTO questionDTO){
         Long result = questionService.save(questionDTO);
         System.out.println(result);
-       return "redirect:/";
+        return "redirect:/";
     }
     @GetMapping("/list")
     public String list(@ModelAttribute QuestionDTO questionDTO,Model model){
@@ -35,15 +35,16 @@ public class QuestionController {
     @GetMapping("/adminlist")
     public String adminlist(@ModelAttribute QuestionDTO questionDTO,Model model){
         List<QuestionDTO> questionDTOList= questionService.findAll();
+
         model.addAttribute("result", questionDTOList);
         return "questionPages/adminlist";
     }
-    @PostMapping("/answer")
-    public String answer(@ModelAttribute QuestionDTO questionDTO){
-            questionDTO.findById(questionDTO.g
-        return "";
+    @GetMapping("/clickEvent/{id}")
+    public String clickEvent(@PathVariable Long id, Model model){
+        System.out.println(id);
+   QuestionDTO questionDTO = questionService.findById(id);
+   model.addAttribute("question", questionDTO);
+   return "/questionPages/adminlist";
     }
 
-    }
-
-
+}
