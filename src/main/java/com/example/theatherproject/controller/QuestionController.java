@@ -32,6 +32,17 @@ public class QuestionController {
         model.addAttribute("result", questionDTOList);
         return "questionPages/list";
     }
+    @GetMapping("/adminlist")
+    public String adminlist(@ModelAttribute QuestionDTO questionDTO,Model model){
+        List<QuestionDTO> questionDTOList= questionService.findAll();
+        model.addAttribute("result", questionDTOList);
+        return "questionPages/adminlist";
+    }
+    @PostMapping("/answer")
+    public String answer(@ModelAttribute QuestionDTO questionDTO){
+            questionDTO.findById(questionDTO.g
+        return "";
+    }
 
     }
 

@@ -20,10 +20,16 @@
   </thead>
   <tr th:each="result: ${result}">
     <td th:text="${result.id}"></td>
-    <td th:text="*{#temporals.format(result.createdTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+    <td th:text="*{#temporals.format(result.createdTime, 'yyyy-MM-dd')}"></td>
     <td th:text="${result.questionTitle}"></td>
     <td th:text="${result.questionContents}"></td>
-    <td th:text="${result.questionAnswer}"></td>
+<!--    <td th:text="${result.questionAnswer}"></td>-->
+    <td th:if="${result.questionAnswer == null}">
+      <h5>진행중</h5>
+    </td>
+    <td th:unless="${result.questionAnswer == null}">
+      <h5>답변보기</h5>
+    </td>
 
   </tr>
 </table>

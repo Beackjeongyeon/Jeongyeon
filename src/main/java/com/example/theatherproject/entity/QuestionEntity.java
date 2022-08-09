@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter@Setter
 @Table(name = "question_table")
-public class QuestionEntity extends BaseEntity{
+public class QuestionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +23,10 @@ public class QuestionEntity extends BaseEntity{
 
     @Column
     private String questionContents;
+
+    @Column
+    @CreationTimestamp
+    private LocalDateTime createdTime;
 
     @Column
     private String questionAnswer;
@@ -37,6 +41,7 @@ public class QuestionEntity extends BaseEntity{
         QuestionEntity questionEntity = new QuestionEntity();
         questionEntity.setId(questionDTO.getId());
         questionEntity.setMemberEntity(memberEntity);
+        questionEntity.setCreatedTime(questionDTO.getCreatedTime());
         questionEntity.setQuestionTitle(questionDTO.getQuestionTitle());
         questionEntity.setQuestionContents(questionDTO.getQuestionContents());
         questionEntity.setQuestionAnswer(questionDTO.getQuestionAnswer());

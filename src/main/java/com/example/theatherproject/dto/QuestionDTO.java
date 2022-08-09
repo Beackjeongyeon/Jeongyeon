@@ -18,7 +18,6 @@ public class QuestionDTO {
     private String questionContents;
     private String questionAnswer;
     private Long memberId;
-
     private LocalDateTime createdTime;
 
     public QuestionDTO(String questionTitle, String questionContents, String questionAnswer, Long memberId, LocalDateTime createdTime) {
@@ -33,6 +32,7 @@ public class QuestionDTO {
         QuestionDTO questionDTO = new QuestionDTO();
         questionDTO.setId(result1.getId());
         questionDTO.setMemberId(result1.getMemberEntity().getId());
+        questionDTO.setCreatedTime(result1.getCreatedTime());
         questionDTO.setQuestionTitle(result1.getQuestionTitle());
         questionDTO.setQuestionContents(result1.getQuestionContents());
         questionDTO.setQuestionAnswer(result1.getQuestionAnswer());
