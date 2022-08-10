@@ -1,5 +1,6 @@
 package com.example.theatherproject.entity;
 
+import com.example.theatherproject.dto.AnswerDTO;
 import com.example.theatherproject.dto.QuestionDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,15 +8,18 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 @Table(name = "question_table")
 public class QuestionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "question_Id")
     private Long id;
 
     @Column
@@ -25,26 +29,39 @@ public class QuestionEntity {
     private String questionContents;
 
     @Column
-    @CreationTimestamp
-    private LocalDateTime createdTime;
+    private String questionAnswer;
 
     @Column
-    private String questionAnswer;
+    @CreationTimestamp
+    private LocalDateTime createdTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_Id")
     private MemberEntity memberEntity;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "answer")
+    private AnswerEntity answerEntity;
 
 
-    public static QuestionEntity save(QuestionDTO questionDTO, MemberEntity memberEntity){
+    public static QuestionEntity save(QuestionDTO questionDTO, MemberEntity memberEntity) {
         QuestionEntity questionEntity = new QuestionEntity();
         questionEntity.setId(questionDTO.getId());
         questionEntity.setMemberEntity(memberEntity);
         questionEntity.setCreatedTime(questionDTO.getCreatedTime());
         questionEntity.setQuestionTitle(questionDTO.getQuestionTitle());
+//        questionEntity.setQuestionAnswer(answerEntity.getAnswer());
         questionEntity.setQuestionContents(questionDTO.getQuestionContents());
-        questionEntity.setQuestionAnswer(questionDTO.getQuestionAnswer());
+        return questionEntity;
+    }
+    public static QuestionEntity updateQuestion(QuestionDTO questionDTO, AnswerDTO answerDTO, MemberEntity memberEntity){
+        QuestionEntity questionEntity = new QuestionEntity();
+        questionEntity.setId(questionDTO.getId());
+        questionEntity.setQuestionAnswer(answerDTO.getAnswer());
+        questionEntity.setQuestionTitle(questionDTO.getQuestionTitle());
+        questionEntity.setQuestionContents(questionDTO.getQuestionContents());
+        questionEntity.setCreatedTime(questionDTO.getCreatedTime());
+        questionEntity.setMemberEntity(memberEntity);
         return questionEntity;
     }
 

@@ -52,7 +52,11 @@ public class MemberEntity {
             fetch = FetchType.LAZY)
     private List<QuestionEntity> questionList = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "memberEntity",
+            cascade = CascadeType.REMOVE,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
+    private List<AnswerEntity> answerList = new ArrayList<>();
 
     public static MemberEntity save(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();

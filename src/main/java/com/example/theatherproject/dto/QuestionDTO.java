@@ -1,12 +1,9 @@
 package com.example.theatherproject.dto;
-
-import com.example.theatherproject.entity.MemberEntity;
+import com.example.theatherproject.entity.AnswerEntity;
 import com.example.theatherproject.entity.QuestionEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,6 +13,7 @@ public class QuestionDTO {
     private Long id;
     private String questionTitle;
     private String questionContents;
+
     private String questionAnswer;
     private Long memberId;
     private LocalDateTime createdTime;
@@ -35,7 +33,7 @@ public class QuestionDTO {
         questionDTO.setCreatedTime(result1.getCreatedTime());
         questionDTO.setQuestionTitle(result1.getQuestionTitle());
         questionDTO.setQuestionContents(result1.getQuestionContents());
-        questionDTO.setQuestionAnswer(result1.getQuestionAnswer());
+//        questionDTO.setQuestionAnswer(result1.getQuestionAnswer());
         return questionDTO;
     }
 }

@@ -1,8 +1,11 @@
 package com.example.theatherproject.service;
 
+import com.example.theatherproject.dto.AnswerDTO;
 import com.example.theatherproject.dto.QuestionDTO;
+import com.example.theatherproject.entity.AnswerEntity;
 import com.example.theatherproject.entity.MemberEntity;
 import com.example.theatherproject.entity.QuestionEntity;
+import com.example.theatherproject.repository.AnswerRepository;
 import com.example.theatherproject.repository.MemberRepository;
 import com.example.theatherproject.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +22,7 @@ import java.util.Optional;
 public class QuestionService {
     private final QuestionRepository questionRepository;
     private final MemberRepository memberRepository;
+    private final AnswerRepository answerRepository;
 
     public Long save(QuestionDTO questionDTO) {
         Optional<MemberEntity> optionalMemberEntity =
@@ -37,19 +41,31 @@ public class QuestionService {
 
     @Transactional
     public List<QuestionDTO> findAll() {
-         List<QuestionEntity> questionEntityList= questionRepository.findAll();
-          List<QuestionDTO> questionDTOList= new ArrayList<>();
-          for(QuestionEntity questionEntity: questionEntityList){
-              questionDTOList.add(QuestionDTO.toQuestionDTO(questionEntity));
-          }return questionDTOList;
+        List<QuestionEntity> questionEntityList = questionRepository.findAll();
+        List<QuestionDTO> questionDTOList = new ArrayList<>();
+        for (QuestionEntity questionEntity : questionEntityList) {
+            questionDTOList.add(QuestionDTO.toQuestionDTO(questionEntity));
+        }
+        return questionDTOList;
     }
 
     public QuestionDTO findById(Long id) {
         Optional<QuestionEntity> optionalQuestionEntity = questionRepository.findById(id);
-        if(optionalQuestionEntity.isPresent()){
-          QuestionEntity questionEntity = optionalQuestionEntity.get();
-          return QuestionDTO.toQuestionDTO(questionEntity);
+        if (optionalQuestionEntity.isPresent()) {
+            QuestionEntity questionEntity = optionalQuestionEntity.get();
+            return QuestionDTO.toQuestionDTO(questionEntity);
         }
         return null;
+    }
+
+
+    public void saveId(Long id) {
+        Optional<AnswerEntity> optionalAnswerEntity = answerRepository.findById(id);
+        String answer = optionalAnswerEntity.get().getAnswer();
+        Optional<QuestionEntity> byId = questionRepository.findById(id);
+        if (byId.isPresent()) {
+            QuestionEntity questionEntity = byId.get();
+            questionEntity.setQuestionContents(questionEntity);
+        }
     }
 }

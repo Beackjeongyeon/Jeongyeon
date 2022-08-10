@@ -11,6 +11,7 @@
 <body>
 <th:block th:replace="commonPages/adminheader :: header"></th:block>
 </body>
+<tr th:each="result: ${result}">
 <table class="table table-hover">
     <thead>
     <tr class="table-dark">
@@ -21,12 +22,11 @@
         <td>답변</td>
     </tr>
     </thead>
-    <tr th:each="result: ${result}">
+
         <td th:text="${result.id}"></td>
         <td th:text="*{#temporals.format(result.createdTime, 'yyyy-MM-dd')}"></td>
         <td th:text="${result.questionTitle}"></td>
         <td th:text="${result.questionContents}"></td>
-        <!--    <td th:text="${result.questionAnswer}"></td>-->
         <td th:if="${result.questionAnswer == null}">
             <div id="wrap">
                 <a href="javascript:openModal('modal1');" class="button modal-open" th:onclick="click([[${result.id}]])">
@@ -38,51 +38,53 @@
             <h5>진행완료</h5>
         </td>
 
-    </tr>
+
 </table>
-    <div id="modal"></div>
-    <div class="modal-con modal1">
-        <a href="javascript:;" class="close">X</a>
+<div id="modal"></div>
+<div class="modal-con modal1">
+    <a href="javascript:;" class="close">X</a>
 
-        <p class="title">답변하기</p>
-        <div class="body">
-        </div>
-        <form action="/question/answer" method="post">
-            <div class="form-group"  >
-                <label for="exampleTextarea" class="form-label mt-4"></label>
-                <textarea class="form-control" id="exampleTextarea" name="questionAnswer" rows="3" style="height: 300px"></textarea>
-            </div>
-            <button class="button1" type="submit">
-                답변하기
-            </button>
-        </form>
+    <p class="title">답변하기</p>
+    <div class="body">
     </div>
+    <form action="/answer/save" method="post">
+        <div class="form-group"  >
+            <label for="exampleTextarea" class="form-label mt-4"></label>
+            <input type="hidden" name="number" th:value="${result.id}">
+            <textarea class="form-control" id="exampleTextarea" name="answer" rows="3" style="height: 300px"></textarea>
+        </div>
+        <button class="button1" type="submit">
+            답변하기
+        </button>
+    </form>
+</div>
+</tr>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            function openModal(modalname) {
-                document.get
-                $("#modal").fadeIn(300);
-                $("." + modalname).fadeIn(300);
-                document.body.style.overflow = "hidden";
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function openModal(modalname) {
+        document.get
+        $("#modal").fadeIn(300);
+        $("." + modalname).fadeIn(300);
+        document.body.style.overflow = "hidden";
 
 
-            }
+    }
 
-            $("#modal, .close").on('click', function () {
-                $("#modal").fadeOut(300);
-                $(".modal-con").fadeOut(300);
-                document.body.style.overflow = "unset";
-            });
+    $("#modal, .close").on('click', function () {
+        $("#modal").fadeOut(300);
+        $(".modal-con").fadeOut(300);
+        document.body.style.overflow = "unset";
+    });
 
-            const index = () => {
-                location.href = "/"
+    const index = () => {
+        location.href = "/"
 
 
-            }
-            const click = (id) => {
-                location.href = "/question/clickEvent/"+ id;
-            }
-        </script>
+    }
+    const click = (id) => {
+        location.href = "/question/clickEvent/"+ id;
+    }
+</script>
 
 </html>
