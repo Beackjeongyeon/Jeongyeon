@@ -59,13 +59,16 @@ public class QuestionService {
     }
 
 
-    public void saveId(Long id) {
-        Optional<AnswerEntity> optionalAnswerEntity = answerRepository.findById(id);
-        String answer = optionalAnswerEntity.get().getAnswer();
-        Optional<QuestionEntity> byId = questionRepository.findById(id);
-        if (byId.isPresent()) {
-            QuestionEntity questionEntity = byId.get();
-            questionEntity.setQuestionContents(questionEntity);
-        }
-    }
+//    public void saveId(Long id) {
+//        Optional<QuestionEntity> optionalQuestionEntity =
+//                questionRepository.findById(id);
+//        Optional<AnswerEntity> optionalAnswerEntity =
+//                questionRepository.findByNumber(id);
+//        System.out.println(optionalAnswerEntity);
+//        if(optionalQuestionEntity.isPresent()){
+//            String result= optionalAnswerEntity.get().getAnswer();
+////            save(QuestionEntity.save(questionDTO, memberEntity)).getMemberEntity().getId();
+////            questionRepository.save(
+//        }
+//    }
 }

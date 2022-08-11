@@ -22,24 +22,19 @@ public class AnswerEntity {
     @Column
     private Long number;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "member_Id")
-    private MemberEntity memberEntity;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "question_Id")
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "question_Id")
     private QuestionEntity questionEntity;
 
-    @OneToMany(mappedBy = "answerEntity", cascade = CascadeType.REMOVE, orphanRemoval = true,
-    fetch = FetchType.LAZY)
-    private List<QuestionEntity> questionList = new ArrayList<>();
 
-    public static AnswerEntity save(AnswerDTO answerDTO,QuestionEntity questionEntity){
+
+    public static AnswerEntity save(AnswerDTO answerDTO, QuestionEntity questionEntity){
         AnswerEntity answerEntity = new AnswerEntity();
         answerEntity.setId(answerDTO.getId());
         answerEntity.setAnswer(answerDTO.getAnswer());
         answerEntity.setNumber(questionEntity.getId());
+        answerEntity.setQuestionEntity(questionEntity);
         return answerEntity;
 
     }

@@ -28,10 +28,4 @@ public class AnswerDTO {
         answerDTO.setNumber(answerEntity.getNumber());
         return answerDTO;
     }
-
-//    public static AnswerDTO save1DTO(AnswerEntity answerEntity) {
-//        AnswerDTO answerDTO = new AnswerDTO();
-//        answerDTO.setAnswer(answerEntity.getAnswer());
-//        answerDTO.setNumber(answerDTO.getNumber());
-//    }
 }

@@ -39,9 +39,10 @@ public class QuestionEntity {
     @JoinColumn(name = "member_Id")
     private MemberEntity memberEntity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "answer")
+    @OneToOne(mappedBy = "questionEntity", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private AnswerEntity answerEntity;
+
 
 
     public static QuestionEntity save(QuestionDTO questionDTO, MemberEntity memberEntity) {
@@ -54,14 +55,15 @@ public class QuestionEntity {
         questionEntity.setQuestionContents(questionDTO.getQuestionContents());
         return questionEntity;
     }
-    public static QuestionEntity updateQuestion(QuestionDTO questionDTO, AnswerDTO answerDTO, MemberEntity memberEntity){
+    public static QuestionEntity updateQuestion(QuestionDTO questionDTO,MemberEntity memberEntity, AnswerEntity answerEntity){
         QuestionEntity questionEntity = new QuestionEntity();
         questionEntity.setId(questionDTO.getId());
-        questionEntity.setQuestionAnswer(answerDTO.getAnswer());
         questionEntity.setQuestionTitle(questionDTO.getQuestionTitle());
         questionEntity.setQuestionContents(questionDTO.getQuestionContents());
-        questionEntity.setCreatedTime(questionDTO.getCreatedTime());
+        questionEntity.setQuestionAnswer(answerEntity.getAnswer());
+        questionEntity.setAnswerEntity(answerEntity);
         questionEntity.setMemberEntity(memberEntity);
+        questionEntity.setCreatedTime(questionDTO.getCreatedTime());
         return questionEntity;
     }
 

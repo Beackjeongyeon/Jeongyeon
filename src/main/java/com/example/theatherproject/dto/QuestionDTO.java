@@ -33,7 +33,7 @@ public class QuestionDTO {
         questionDTO.setCreatedTime(result1.getCreatedTime());
         questionDTO.setQuestionTitle(result1.getQuestionTitle());
         questionDTO.setQuestionContents(result1.getQuestionContents());
-//        questionDTO.setQuestionAnswer(result1.getQuestionAnswer());
+        questionDTO.setQuestionAnswer(result1.getQuestionAnswer());
         return questionDTO;
     }
 }
