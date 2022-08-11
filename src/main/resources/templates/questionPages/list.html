@@ -23,7 +23,6 @@
     <td th:text="*{#temporals.format(result.createdTime, 'yyyy-MM-dd')}"></td>
     <td th:text="${result.questionTitle}"></td>
     <td th:text="${result.questionContents}"></td>
-<!--    <td th:text="${result.questionAnswer}"></td>-->
     <td th:if="${result.questionAnswer == null}">
       <h5>진행중</h5>
     </td>

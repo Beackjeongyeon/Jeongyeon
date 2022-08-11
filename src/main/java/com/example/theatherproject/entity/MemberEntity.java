@@ -4,6 +4,7 @@ import com.example.theatherproject.dto.MemberDTO;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -43,6 +44,7 @@ public class MemberEntity {
     private String memberPhone;
 
     @Column
+    @CreationTimestamp
     private LocalDateTime memberCreatedTime;
 
 
@@ -65,5 +67,17 @@ public class MemberEntity {
         memberEntity.setMemberCreatedTime(memberDTO.getMemberCreatedTime());
         return memberEntity;
 
+    }
+
+    public static MemberEntity entityUpdate(MemberDTO memberDTO) {
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setUserId(memberDTO.getUserId());
+        memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+        memberEntity.setMemberPassword2(memberDTO.getMemberPassword2());
+        memberEntity.setMemberName(memberDTO.getMemberName());
+        memberEntity.setMemberAge(memberDTO.getMemberAge());
+        memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+        memberEntity.setMemberPhone(memberDTO.getMemberPhone());
+        return memberEntity;
     }
 }

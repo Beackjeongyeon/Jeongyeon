@@ -68,10 +68,18 @@ public class MemberController {
     }
 
     // 회원정보수정
-    @GetMapping("/update")
-    public String update() {
-
-        return "/memberPages/update";
+    @GetMapping("/update-form")
+    public String updateform(HttpSession session , Model model) {
+        Long id= (Long)session.getAttribute("id");
+        MemberDTO result = memberService.findById(id);
+        model.addAttribute("result",result);
+        return "memberPages/update";
+    }
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO, Model model){
+        System.out.println(memberDTO);
+        memberService.update(memberDTO);
+       return "redirect:/member/"+memberDTO.getId();
     }
 
     // 예약정보확인
