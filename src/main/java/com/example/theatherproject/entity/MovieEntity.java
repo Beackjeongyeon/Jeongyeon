@@ -45,13 +45,8 @@ public class MovieEntity {
     private LocalDateTime movieClose;
 
     @Column
-    private String movieTime;
-
-    @Column
     private String moviePosterName;
 
-    @Column
-    private String movieUrl;
 
     @OneToMany(mappedBy = "movieEntity",
             cascade = CascadeType.REMOVE,
@@ -87,9 +82,7 @@ public class MovieEntity {
         movieEntity.setMovieCreated(movieDTO.getMovieCreated());
         movieEntity.setMovieOpen(movieDTO.getMovieOpen());
         movieEntity.setMovieClose(movieDTO.getMovieClose());
-        movieEntity.setMovieTime(movieDTO.getMovieTime());
         movieEntity.setMoviePosterName(movieDTO.getMoviePosterName());
-        movieEntity.setMovieUrl(movieDTO.getMovieUrl());
         return movieEntity;
     }
 }

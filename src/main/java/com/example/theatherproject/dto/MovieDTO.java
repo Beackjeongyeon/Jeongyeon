@@ -3,6 +3,7 @@ package com.example.theatherproject.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -23,11 +24,10 @@ public class MovieDTO {
     private String movieCreated;
     private LocalDateTime movieOpen;
     private LocalDateTime movieClose;
-    private String movieTime;
+    private MultipartFile moviePoster;
     private String moviePosterName;
-    private String movieUrl;
 
-    public MovieDTO(String movieName, String classA, String classB, String classC, String movieContents, String movieCreated, LocalDateTime movieOpen, LocalDateTime movieClose, String movieTime, String moviePosterName, String movieUrl) {
+    public MovieDTO(String movieName, String classA, String classB, String classC, String movieContents, String movieCreated, LocalDateTime movieOpen, LocalDateTime movieClose, MultipartFile moviePoster, String moviePosterName) {
         this.movieName = movieName;
         this.classA = classA;
         this.classB = classB;
@@ -36,9 +36,7 @@ public class MovieDTO {
         this.movieCreated = movieCreated;
         this.movieOpen = movieOpen;
         this.movieClose = movieClose;
-        this.movieTime = movieTime;
+        this.moviePoster = moviePoster;
         this.moviePosterName = moviePosterName;
-        this.movieUrl = movieUrl;
     }
-
 }
