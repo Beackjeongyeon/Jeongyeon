@@ -71,6 +71,7 @@ public class MemberEntity {
 
     public static MemberEntity entityUpdate(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setId(memberDTO.getId());
         memberEntity.setUserId(memberDTO.getUserId());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setMemberPassword2(memberDTO.getMemberPassword2());

@@ -77,9 +77,8 @@ public class MemberController {
     }
     @PostMapping("/update")
     public String update(@ModelAttribute MemberDTO memberDTO, Model model){
-        System.out.println(memberDTO);
         memberService.update(memberDTO);
-       return "redirect:/member/"+memberDTO.getId();
+       return "memberPages/Mypage";
     }
 
     // 예약정보확인
