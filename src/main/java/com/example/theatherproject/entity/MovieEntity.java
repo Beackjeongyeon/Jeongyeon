@@ -69,7 +69,7 @@ public class MovieEntity {
             cascade = CascadeType.REMOVE,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
-    private List<ClassBEntity> classBEntityList = new ArrayList<>();
+    private List<ClassBEntity> classCEntityList = new ArrayList<>();
 
     @OneToMany(mappedBy = "movieEntity",
             cascade = CascadeType.REMOVE,

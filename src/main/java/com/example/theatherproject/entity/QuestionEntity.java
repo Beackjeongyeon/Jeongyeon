@@ -51,7 +51,6 @@ public class QuestionEntity {
         questionEntity.setMemberEntity(memberEntity);
         questionEntity.setCreatedTime(questionDTO.getCreatedTime());
         questionEntity.setQuestionTitle(questionDTO.getQuestionTitle());
-//        questionEntity.setQuestionAnswer(answerEntity.getAnswer());
         questionEntity.setQuestionContents(questionDTO.getQuestionContents());
         return questionEntity;
     }
