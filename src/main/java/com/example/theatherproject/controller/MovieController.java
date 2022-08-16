@@ -33,7 +33,7 @@ public class MovieController {
     @GetMapping("/select")
     public String findall( Model model){
         List<MovieDTO> movieDTOList = movieService.findAll();
-        model.addAttribute("result", movieDTOList);
+        model.addAttribute("resultList", movieDTOList);
         System.out.println(movieDTOList);
         return "moviePages/detail";
 
@@ -47,6 +47,10 @@ public class MovieController {
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         return "moviePages/list";
+    }
+    @GetMapping("/ticket")
+    public String ticket(){
+        return "";
     }
 
 

@@ -26,7 +26,7 @@ public class MovieService {
         MultipartFile File= movieDTO.getMoviePoster();
         String FileName= File.getOriginalFilename();
         FileName = System.currentTimeMillis() +"_" + FileName;
-        String savePath = "D:\\movie_img\\"+ FileName;
+        String savePath = "D:\\springboot_img\\"+ FileName;
         if(!File.isEmpty()){
             File.transferTo(new File(savePath));
         }
