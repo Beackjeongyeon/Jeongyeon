@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClassADTO {
-    private Long id;
+    private Long id ;
 
     private int CountA;
 

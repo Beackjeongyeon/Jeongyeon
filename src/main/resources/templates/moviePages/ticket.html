@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap2.css}">
 </head>
 <body>
+<th:block th:replace="commonPages/header :: header"></th:block>
+<div class="container">
+    <div id="title "style="margin-top: 100px">
+        <h1>영화예매</h1>
+    </div>자바스크립트 곱셈
 
+    <form action="/movie/save" method="post" >
+        <legend class="mt-4">영화시간대</legend>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="ticketTime" id="optionsRadios1" th:value="6000">
+            <label class="form-check-label" for="optionsRadios1">
+                조조(06:00 ~12:00) 1인기준 6000원
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="ticketTime" id="optionsRadios2" th:value="12000">
+            <label class="form-check-label" for="optionsRadios2">
+                주간(12:00 ~24:00) 1인기준 12000원
+            </label>
+        </div>
+        <div class="form-check disabled">
+            <input class="form-check-input" type="radio" name="ticketTime" id="optionsRadios3" th:value="C">
+            <label class="form-check-label" for="optionsRadios3">
+                심야(24:00 ~06:00) 1인기준 10000원
+            </label>
+        </div>
+        </fieldset>
+        <br>
+        <button type="submit" class="btn btn-secondary" th:onclick="save()">영화예매</button>
+    </form>
+</div>
 </body>
+<script th:inline="javascript">
+    function save(){
+
+
+        $(function (){
+           var a = 6000;
+           var b = 12000;
+           var c = 10000;
+           if()
+           console.log(a)
+        });
+    }
+</script>
 </html>

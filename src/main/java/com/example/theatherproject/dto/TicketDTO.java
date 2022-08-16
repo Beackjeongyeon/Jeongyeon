@@ -18,9 +18,7 @@ public class TicketDTO {
 
     private Long id;
 
-    private String movieName;
-
-    private String movieTime;
+    private String ticketTime;
 
     private int ticketPrice;
 
@@ -30,12 +28,5 @@ public class TicketDTO {
 
     private String memberPhone;
 
-    public TicketDTO(String movieName, String movieTime, int ticketPrice, LocalDateTime ticketDate, String memberName, String memberPhone) {
-        this.movieName = movieName;
-        this.movieTime = movieTime;
-        this.ticketPrice = ticketPrice;
-        this.ticketDate = ticketDate;
-        this.memberName = memberName;
-        this.memberPhone = memberPhone;
-    }
+
 }

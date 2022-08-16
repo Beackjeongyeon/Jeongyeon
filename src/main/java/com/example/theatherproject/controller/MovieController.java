@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class MovieController {
     @PostMapping("/save")
     public String save(@ModelAttribute MovieDTO movieDTO) throws IOException {
         movieService.save(movieDTO);
-        return "redirect:/movie";
+        return "moviePages/save";
     }
     @GetMapping("/select")
     public String findall( Model model){
@@ -48,9 +49,12 @@ public class MovieController {
         model.addAttribute("endPage", endPage);
         return "moviePages/list";
     }
-    @GetMapping("/ticket")
-    public String ticket(){
-        return "";
+    @GetMapping("/ticket/{id}")
+    public String ticket(@PathVariable("id")Long id,  Model model){
+       List<MovieDTO> movieDTOList= movieService.findAll();
+       model.addAttribute("result2", movieDTOList);
+       model.addAttribute("movieId", id);
+        return "moviePages/ticket";
     }
 
 

@@ -20,10 +20,7 @@ public class TicketEntity {
     private Long id;
 
     @Column
-    private String movieName;
-
-    @Column
-    private String movieTime;
+    private String ticketTime;
 
     @Column
     private int ticketPrice;
@@ -32,24 +29,22 @@ public class TicketEntity {
     @CreationTimestamp
     private LocalDateTime ticketDate;
 
-    @Column
-    private String memberName;
-
-    @Column
-    private String memberPhone;
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "member_Id")
+   private MemberEntity memberEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_Id")
     private MovieEntity movieEntity;
 
-    public static TicketEntity save(TicketDTO ticketDTO) {
+    public static TicketEntity save(TicketDTO ticketDTO,MemberEntity memberEntity,MovieEntity movieEntity) {
         TicketEntity ticketEntity = new TicketEntity();
-        ticketEntity.setMovieName(ticketDTO.getMovieName());
-        ticketEntity.setMovieTime(ticketDTO.getMovieTime());
+        memberEntity.setMemberName(memberEntity.getMemberName());
+        ticketEntity.setTicketTime(ticketDTO.getTicketTime());
         ticketEntity.setTicketPrice(ticketDTO.getTicketPrice());
         ticketEntity.setTicketDate(ticketDTO.getTicketDate());
-        ticketEntity.setMemberName(ticketDTO.getMemberName());
-        ticketEntity.setMemberPhone(ticketDTO.getMemberPhone());
+        movieEntity.setMovieName(movieEntity.getMovieName());
+        movieEntity.setMovieclass(movieEntity.getMovieclass());
         return ticketEntity;
     }
 }

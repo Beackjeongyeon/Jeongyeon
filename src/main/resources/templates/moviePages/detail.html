@@ -29,14 +29,12 @@
         <td th:text="${result.movieOpen}"></td>
         <td th:text="${result.movieClose}"></td>
         <td><img th:src="@{|/upload/${result.moviePosterName}|}" width="100" height="100" alt=""></td>
-        <td>
-            <div id="wrap">
-                <a href="/movie/ticket/">
-                    <span>예매하기</span>
-                </a>
-            </div>
-        </td>
+        <td><a th:onclick="save([[${result.id}]])">예매하기</a></td>
     </tr>
-
 </table>
+<script>
+    const save = (id) =>{
+        location.href = "/movie/ticket/" + id;
+    }
+</script>
 </html>
