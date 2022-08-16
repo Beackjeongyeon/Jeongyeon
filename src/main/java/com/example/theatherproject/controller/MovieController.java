@@ -18,13 +18,15 @@ public class MovieController {
     final private MovieService movieService;
 
     @GetMapping("/save-form")
-    public String saveform(){
+    public String saveform() {
         return "moviePages/save";
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute MovieDTO movieDTO)throws IOException {
+    public String save(@ModelAttribute MovieDTO movieDTO) throws IOException {
         movieService.save(movieDTO);
         return "moviePages/save";
     }
+
+
 }

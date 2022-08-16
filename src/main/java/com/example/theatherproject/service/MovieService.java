@@ -9,8 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.OpenOption;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,11 +23,9 @@ public class MovieService {
             File.transferTo(new File(savePath));
         }
         movieDTO.setMoviePosterName(FileName);
-        Optional<MovieEntity> optionalMovieEntity =
-                movieRepository.finByMovieName(movieDTO.getMovieName());
-        if(optionalMovieEntity.isPresent()){
-            MovieEntity movieEntity = optionalMovieEntity.get();
-            Long saveId = movieRepository.save(MovieEntity.save(movieEntity)).getId();
+        MovieEntity movieEntity = MovieEntity.save(movieDTO);
+        return movieRepository.save(movieEntity).getId();
+
         }
     }
-}
+

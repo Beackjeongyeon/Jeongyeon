@@ -25,17 +25,17 @@
 
         <div class="form-group">
             <label for="exampleSelect1" class="form-label mt-4">상영관선택</label>
-            <select class="form-select" id="exampleSelect1">
-                <option name="classA">A상영관</option>
-                <option name="classB">B상영관</option>
-                <option name="classC">C상영관</option>
+            <select class="form-select" id="exampleSelect1" name="movieclass">
+                <option >A상영관</option>
+                <option >B상영관</option>
+                <option >C상영관</option>
             </select>
         </div>
         <div>
         <input type="date" name="movieCreated" value="영화개봉일">
         </div><br>
         <div>
-            <input type="date" name="movieCreated" value="영화상영일">
+            <input type="date" name="movieOpen" value="영화상영일">
         </div>
         <div>
             <input type="date" name="movieClose" value="영화마감일">
@@ -45,8 +45,13 @@
             <input class="form-control" type="file" id="formFile" name="moviePoster" >
         </div>
         <br>
-        <button type="submit" class="btn btn-secondary" >영화등록</button>
+        <button type="submit" class="btn btn-secondary" th:onclick="save()">영화등록</button>
     </form>
 </div>
 </body>
+<script th:inline="javascript">
+    function save(){
+        alert("영화 등록이 완료되었습니다.")
+    }
+</script>
 </html>

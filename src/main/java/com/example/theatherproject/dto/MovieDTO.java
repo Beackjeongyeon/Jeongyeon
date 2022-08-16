@@ -17,21 +17,18 @@ import java.time.LocalDateTime;
 public class MovieDTO {
     private Long id;
     private String movieName;
-    private String classA;
-    private String classB;
-    private String classC;
+
+    private String movieclass;
     private String movieContents;
     private String movieCreated;
-    private LocalDateTime movieOpen;
-    private LocalDateTime movieClose;
+    private String movieOpen;
+    private String movieClose;
     private MultipartFile moviePoster;
     private String moviePosterName;
 
-    public MovieDTO(String movieName, String classA, String classB, String classC, String movieContents, String movieCreated, LocalDateTime movieOpen, LocalDateTime movieClose, MultipartFile moviePoster, String moviePosterName) {
+    public MovieDTO(String movieName, String movieclass, String movieContents, String movieCreated, String movieOpen, String movieClose, MultipartFile moviePoster, String moviePosterName) {
         this.movieName = movieName;
-        this.classA = classA;
-        this.classB = classB;
-        this.classC = classC;
+        this.movieclass = movieclass;
         this.movieContents = movieContents;
         this.movieCreated = movieCreated;
         this.movieOpen = movieOpen;

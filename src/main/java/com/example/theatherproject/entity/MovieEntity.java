@@ -24,13 +24,7 @@ public class MovieEntity {
     private String movieName;
 
     @Column
-    private String classA;
-
-    @Column
-    private String classB;
-
-    @Column
-    private String classC;
+    private String movieclass;
 
     @Column
     private String movieContents;
@@ -39,10 +33,10 @@ public class MovieEntity {
     private String movieCreated;
 
     @Column
-    private LocalDateTime movieOpen;
+    private String movieOpen;
 
     @Column
-    private LocalDateTime movieClose;
+    private String movieClose;
 
     @Column
     private String moviePosterName;
@@ -75,9 +69,7 @@ public class MovieEntity {
     public static MovieEntity save(MovieDTO movieDTO){
         MovieEntity movieEntity = new MovieEntity();
         movieEntity.setMovieName(movieDTO.getMovieName());
-        movieEntity.setClassA(movieDTO.getClassA());
-        movieEntity.setClassB(movieDTO.getClassB());
-        movieEntity.setClassC(movieDTO.getClassC());
+        movieEntity.setMovieclass(movieDTO.getMovieclass());
         movieEntity.setMovieContents(movieDTO.getMovieContents());
         movieEntity.setMovieCreated(movieDTO.getMovieCreated());
         movieEntity.setMovieOpen(movieDTO.getMovieOpen());
