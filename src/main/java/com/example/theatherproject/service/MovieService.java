@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -69,16 +70,14 @@ public class MovieService {
                 ));
         return movieList;
     }
-
-    @Transactional
-    public List<MovieDTO> findById(Long id) {
-        List<MovieEntity> movieEntityList= movieRepository.findAll();
-        List<MovieDTO> movieDTOList = new ArrayList<>();
-        for(MovieEntity movieEntity: movieEntityList){
-            movieDTOList.add(MovieDTO.toFind(movieEntity));
+    public MovieDTO findById(Long id) {
+        Optional<MovieEntity> optionalMovieEntity =movieRepository.findById(id);
+        if(optionalMovieEntity.isPresent()){
+            MovieEntity result = optionalMovieEntity.get();
+            return MovieDTO.toFind(result);
+        }else{
+            return null;
         }
-        return movieDTOList;
-
     }
 }
 

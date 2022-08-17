@@ -1,5 +1,6 @@
 package com.example.theatherproject.dto;
 
+import com.example.theatherproject.entity.MemberEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,11 +23,30 @@ public class TicketDTO {
 
     private int ticketPrice;
 
-    private LocalDateTime ticketDate;
+    private String ticketDate;
+
+    private LocalDateTime ticketCreated;
 
     private String memberName;
 
-    private String memberPhone;
+    private String movieName;
+
+    private String movieClass;
+
+    private Long userId;
+
+    private Long selectId;
 
 
+    public TicketDTO(String ticketTime, int ticketPrice, String ticketDate, LocalDateTime ticketCreated, String memberName, String movieName, String movieClass, Long userId, Long selectId) {
+        this.ticketTime = ticketTime;
+        this.ticketPrice = ticketPrice;
+        this.ticketDate = ticketDate;
+        this.ticketCreated = ticketCreated;
+        this.memberName = memberName;
+        this.movieName = movieName;
+        this.movieClass = movieClass;
+        this.userId = userId;
+        this.selectId = selectId;
+    }
 }

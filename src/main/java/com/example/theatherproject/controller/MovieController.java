@@ -1,7 +1,9 @@
 package com.example.theatherproject.controller;
 
 import com.example.theatherproject.common.PagingConst;
+import com.example.theatherproject.dto.MemberDTO;
 import com.example.theatherproject.dto.MovieDTO;
+import com.example.theatherproject.service.MemberService;
 import com.example.theatherproject.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,6 +22,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MovieController {
     final private MovieService movieService;
+
+    final private MemberService memberService;
 
     @GetMapping("/save-form")
     public String saveform() {
@@ -50,10 +54,13 @@ public class MovieController {
         return "moviePages/list";
     }
     @GetMapping("/ticket/{id}")
-    public String ticket(@PathVariable("id")Long id,  Model model){
-       List<MovieDTO> movieDTOList= movieService.findAll();
+    public String ticket(@PathVariable("id")Long id,HttpSession session, Model model){
+        MovieDTO movieDTOList= movieService.findById(id);
+        Long result=(Long)session.getAttribute("id");
+        MemberDTO memberDTO= memberService.findById(result);
        model.addAttribute("result2", movieDTOList);
        model.addAttribute("movieId", id);
+       model.addAttribute("member",memberDTO);
         return "moviePages/ticket";
     }
 

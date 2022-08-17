@@ -26,7 +26,7 @@ public class MovieEntity {
     @Column
     private String movieclass;
 
-    @Column
+    @Column(length = 2000)
     private String movieContents;
 
     @Column
