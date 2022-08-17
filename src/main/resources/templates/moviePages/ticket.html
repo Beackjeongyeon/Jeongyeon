@@ -39,10 +39,6 @@
         <input type="text" class="form-control" id="exampleInputEmail1" th:value="${member.memberName}" name="memberName" aria-describedby="eailHelp" style="margin-bottom: 100px"
                th:placeholder="${member.memberName}" readonly>
 
-        <label for="exampleInputEmail1" class="form-label mt-4">상영관</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" th:value="${result2.movieclass}" name="movieClass" aria-describedby="eailHelp" style="margin-bottom: 100px"
-               th:placeholder="${result2.movieclass}" readonly>
-
 <legend class="mt-4"></legend>
 <h3>영화시간대</h3><br>
 <div class="form-check">
@@ -71,7 +67,7 @@
 </div>
 
 <br>
-<button type="submit" class="btn btn-secondary" th:onclick="save()">영화예매</button>
+<button type="submit" class="btn btn-secondary">자리선택</button>
 </form>
 </div>
 </body>

@@ -22,8 +22,8 @@ public class TicketController {
     private final MemberService memberService;
     @PostMapping("/save")
     public String save(@ModelAttribute TicketDTO ticketDTO,Model model){
-        ticketService.save(ticketDTO);
-
-        return "";
+        TicketDTO result= ticketService.save(ticketDTO);
+        model.addAttribute("ticket",result);
+        return "ticketPages/select";
     }
 }

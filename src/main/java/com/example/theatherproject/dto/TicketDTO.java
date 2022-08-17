@@ -1,6 +1,7 @@
 package com.example.theatherproject.dto;
 
 import com.example.theatherproject.entity.MemberEntity;
+import com.example.theatherproject.entity.TicketEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -48,5 +49,19 @@ public class TicketDTO {
         this.movieClass = movieClass;
         this.userId = userId;
         this.selectId = selectId;
+    }
+    public static TicketDTO ticketDTO(TicketEntity ticketEntity){
+        TicketDTO ticketDTO = new TicketDTO();
+        ticketDTO.setId(ticketEntity.getId());
+        ticketDTO.setMemberName(ticketEntity.getMemberName());
+        ticketDTO.setMovieName(ticketEntity.getMovieName());
+        ticketDTO.setMovieClass(ticketEntity.getMovieClass());
+        ticketDTO.setTicketTime(ticketEntity.getTicketTime());
+        ticketDTO.setTicketPrice(ticketEntity.getTicketPrice());
+        ticketDTO.setTicketCreated(ticketEntity.getTicketCreated());
+        ticketDTO.setTicketDate(ticketEntity.getTicketDate());
+        ticketDTO.setUserId(ticketEntity.getUserId());
+        ticketDTO.setSelectId(ticketEntity.getSelectId());
+       return ticketDTO;
     }
 }
