@@ -41,6 +41,9 @@ public class ClassAEntity {
     @Column
     private int A6;
 
+    @Column
+    private Long movieId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_Id")
     private MovieEntity movieEntity;
@@ -55,6 +58,7 @@ public class ClassAEntity {
         classAEntity.setA4(classADTO.getA4());
         classAEntity.setA5(classADTO.getA5());
         classAEntity.setA6(classADTO.getA6());
+        classAEntity.setMovieId(classADTO.getMovieId());
         return classAEntity;
     }
 }

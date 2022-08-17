@@ -31,7 +31,9 @@ public class ClassADTO {
 
     private int A6;
 
-    public ClassADTO(int countA, int disCountA, int a1, int a2, int a3, int a4, int a5, int a6) {
+    private Long movieId;
+
+    public ClassADTO(int countA, int disCountA, int a1, int a2, int a3, int a4, int a5, int a6, Long movieId) {
         CountA = countA;
         DisCountA = disCountA;
         A1 = a1;
@@ -40,5 +42,6 @@ public class ClassADTO {
         A4 = a4;
         A5 = a5;
         A6 = a6;
+        this.movieId = movieId;
     }
 }

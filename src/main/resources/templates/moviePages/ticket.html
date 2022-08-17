@@ -38,7 +38,7 @@
         <label for="exampleInputEmail1" class="form-label mt-4">이름</label>
         <input type="text" class="form-control" id="exampleInputEmail1" th:value="${member.memberName}" name="memberName" aria-describedby="eailHelp" style="margin-bottom: 100px"
                th:placeholder="${member.memberName}" readonly>
-
+        <input type="hidden" th:value="${member.id}" name="movieId">
 <legend class="mt-4"></legend>
 <h3>영화시간대</h3><br>
 <div class="form-check">

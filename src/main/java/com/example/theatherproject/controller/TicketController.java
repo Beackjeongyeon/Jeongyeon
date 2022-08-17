@@ -23,6 +23,7 @@ public class TicketController {
     @PostMapping("/save")
     public String save(@ModelAttribute TicketDTO ticketDTO,Model model){
         TicketDTO result= ticketService.save(ticketDTO);
+        model.addAttribute("id",ticketDTO);
         model.addAttribute("ticket",result);
         return "ticketPages/select";
     }
