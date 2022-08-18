@@ -20,6 +20,8 @@ public class ClassBDTO {
 
     private int DisCountB;
 
+    private String TicketDate;
+
     private int B1;
 
     private int B2;
@@ -32,14 +34,18 @@ public class ClassBDTO {
 
     private int B6;
 
-    public ClassBDTO(int countB, int disCountB, int b1, int b2, int b3, int b4, int b5, int b6) {
+    private Long moviePk;
+
+    public ClassBDTO(int countB, int disCountB, String ticketDate, int b1, int b2, int b3, int b4, int b5, int b6, Long moviePk) {
         CountB = countB;
         DisCountB = disCountB;
+        TicketDate = ticketDate;
         B1 = b1;
         B2 = b2;
         B3 = b3;
         B4 = b4;
         B5 = b5;
         B6 = b6;
+        this.moviePk = moviePk;
     }
 }

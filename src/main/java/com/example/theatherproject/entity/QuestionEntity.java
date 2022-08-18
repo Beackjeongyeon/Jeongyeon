@@ -39,7 +39,7 @@ public class QuestionEntity {
     @JoinColumn(name = "member_Id")
     private MemberEntity memberEntity;
 
-    @OneToOne(mappedBy = "questionEntity", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "questionEntity",cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private AnswerEntity answerEntity;
 

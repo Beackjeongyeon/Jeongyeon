@@ -38,7 +38,9 @@
         <label for="exampleInputEmail1" class="form-label mt-4">이름</label>
         <input type="text" class="form-control" id="exampleInputEmail1" th:value="${member.memberName}" name="memberName" aria-describedby="eailHelp" style="margin-bottom: 100px"
                th:placeholder="${member.memberName}" readonly>
-        <input type="hidden" th:value="${member.id}" name="movieId">
+        <input type="hidden" th:value="${result2.id}" name="selectId">
+        <input type="hidden" th:value="${session.id}" name="userId">
+
 
 <h3>날짜선택</h3><br>
 <div>

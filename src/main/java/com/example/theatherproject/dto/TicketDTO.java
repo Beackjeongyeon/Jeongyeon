@@ -22,6 +22,8 @@ public class TicketDTO {
 
     private int ticketPrice;
 
+    private String ticketDate;
+
     private LocalDateTime ticketCreated;
 
     private String memberName;
@@ -35,8 +37,9 @@ public class TicketDTO {
     private Long selectId;
 
 
-    public TicketDTO(int ticketPrice, LocalDateTime ticketCreated, String memberName, String movieName, String movieClass, Long userId, Long selectId) {
+    public TicketDTO(int ticketPrice, String ticketDate, LocalDateTime ticketCreated, String memberName, String movieName, String movieClass, Long userId, Long selectId) {
         this.ticketPrice = ticketPrice;
+        this.ticketDate = ticketDate;
         this.ticketCreated = ticketCreated;
         this.memberName = memberName;
         this.movieName = movieName;
@@ -45,16 +48,16 @@ public class TicketDTO {
         this.selectId = selectId;
     }
 
-    public static TicketDTO ticketDTO(TicketEntity ticketEntity){
+    public static TicketDTO ticketDTO(TicketEntity ticketEntity) {
         TicketDTO ticketDTO = new TicketDTO();
-        ticketDTO.setId(ticketEntity.getId());
         ticketDTO.setMemberName(ticketEntity.getMemberName());
         ticketDTO.setMovieName(ticketEntity.getMovieName());
         ticketDTO.setMovieClass(ticketEntity.getMovieClass());
         ticketDTO.setTicketPrice(ticketEntity.getTicketPrice());
+        ticketDTO.setTicketDate(ticketEntity.getTicketDate());
         ticketDTO.setTicketCreated(ticketEntity.getTicketCreated());
         ticketDTO.setUserId(ticketEntity.getUserId());
         ticketDTO.setSelectId(ticketEntity.getSelectId());
-       return ticketDTO;
+        return ticketDTO;
     }
 }

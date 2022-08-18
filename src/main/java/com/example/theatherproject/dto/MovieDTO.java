@@ -37,7 +37,7 @@ public class MovieDTO {
         movieDTO.setMovieName(movieEntity.getMovieName());
         movieDTO.setMovieclass(movieEntity.getMovieclass());
         movieDTO.setMovieContents(movieEntity.getMovieContents());
-        movieDTO.setMovieTime(movieEntity.getMovieContents());
+        movieDTO.setMovieTime(movieEntity.getMovieTime());
         movieDTO.setMovieCreated(movieEntity.getMovieCreated());
         movieDTO.setMovieClose(movieEntity.getMovieClose());
         movieDTO.setMoviePosterName(movieEntity.getMoviePosterName());

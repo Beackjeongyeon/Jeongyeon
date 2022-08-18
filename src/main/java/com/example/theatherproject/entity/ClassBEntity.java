@@ -24,6 +24,9 @@ public class ClassBEntity {
     private int DisCountB;
 
     @Column
+    private String TicketDate;
+
+    @Column
     private int B1;
 
     @Column
@@ -45,7 +48,11 @@ public class ClassBEntity {
     @JoinColumn(name = "movie_Id")
     private MovieEntity movieEntity;
 
-    public static ClassBEntity save(ClassBDTO classBDTO) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ticket_Id")
+    private TicketEntity ticketEntity;
+
+    public static ClassBEntity save(ClassBDTO classBDTO, MovieEntity movieEntity,TicketEntity ticketEntity) {
         ClassBEntity classBEntity = new ClassBEntity();
         classBEntity.setCountB(classBDTO.getCountB());
         classBEntity.setB1(classBDTO.getB1());
@@ -54,6 +61,8 @@ public class ClassBEntity {
         classBEntity.setB4(classBDTO.getB4());
         classBEntity.setB5(classBDTO.getB5());
         classBEntity.setB6(classBDTO.getB6());
+        classBEntity.setTicketDate(ticketEntity.getTicketDate());
+        classBEntity.setMovieEntity(movieEntity);
         return classBEntity;
     }
 }

@@ -70,8 +70,8 @@ public class MovieEntity {
         MovieEntity movieEntity = new MovieEntity();
         movieEntity.setMovieName(movieDTO.getMovieName());
         movieEntity.setMovieclass(movieDTO.getMovieclass());
-        movieEntity.setMovieContents(movieDTO.getMovieContents());
         movieEntity.setMovieTime(movieDTO.getMovieTime());
+        movieEntity.setMovieContents(movieDTO.getMovieContents());
         movieEntity.setMovieCreated(movieDTO.getMovieCreated());
         movieEntity.setMovieClose(movieDTO.getMovieClose());
         movieEntity.setMoviePosterName(movieDTO.getMoviePosterName());

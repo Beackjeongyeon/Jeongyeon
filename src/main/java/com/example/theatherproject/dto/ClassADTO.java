@@ -19,6 +19,8 @@ public class ClassADTO {
 
     private int DisCountA;
 
+    private String TicketDate;
+
     private int A1;
 
     private int A2;
@@ -33,9 +35,12 @@ public class ClassADTO {
 
     private Long moviePk;
 
-    public ClassADTO(int countA, int disCountA, int a1, int a2, int a3, int a4, int a5, int a6, Long moviePk) {
+    private Long TicketPk;
+
+    public ClassADTO(int countA, int disCountA, String ticketDate, int a1, int a2, int a3, int a4, int a5, int a6, Long moviePk, Long ticketPk) {
         CountA = countA;
         DisCountA = disCountA;
+        TicketDate = ticketDate;
         A1 = a1;
         A2 = a2;
         A3 = a3;
@@ -43,5 +48,6 @@ public class ClassADTO {
         A5 = a5;
         A6 = a6;
         this.moviePk = moviePk;
+        TicketPk = ticketPk;
     }
 }
