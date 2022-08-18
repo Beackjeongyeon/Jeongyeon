@@ -17,6 +17,7 @@
     <tr class="table-dark">
         <td>영화제목</td>
         <td>상영관</td>
+        <td>영화시간</td>
         <td>영화개봉일</td>
         <td>영화마감일</td>
         <td>영화포스터</td>
@@ -26,7 +27,8 @@
     <tr th:each="result: ${resultList}">
         <td th:text="${result.movieName}"></td>
         <td th:text="${result.movieclass}"></td>
-        <td th:text="${result.movieOpen}"></td>
+        <td th:text="${result.movieTime}"></td>
+        <td th:text="${result.movieCreated}"></td>
         <td th:text="${result.movieClose}"></td>
         <td><img th:src="@{|/upload/${result.moviePosterName}|}" width="100" height="100" alt=""></td>
         <td><a th:onclick="save([[${result.id}]])">예매하기</a></td>

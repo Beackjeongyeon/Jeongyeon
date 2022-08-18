@@ -39,30 +39,10 @@
         <input type="text" class="form-control" id="exampleInputEmail1" th:value="${member.memberName}" name="memberName" aria-describedby="eailHelp" style="margin-bottom: 100px"
                th:placeholder="${member.memberName}" readonly>
         <input type="hidden" th:value="${member.id}" name="movieId">
-<legend class="mt-4"></legend>
-<h3>영화시간대</h3><br>
-<div class="form-check">
-    <input class="form-check-input" type="radio" name="ticketTime" id="optionsRadios1" th:value="6000">
-    <label class="form-check-label" for="optionsRadios1">
-        조조(06:00 ~12:00) 1인기준 6000원
-    </label>
-</div>
-<div class="form-check">
-    <input class="form-check-input" type="radio" name="ticketTime" id="optionsRadios2" th:value="12000">
-    <label class="form-check-label" for="optionsRadios2">
-        주간(12:00 ~24:00) 1인기준 12000원
-    </label>
-</div>
-<div class="form-check disabled">
-    <input class="form-check-input" type="radio" name="ticketTime" id="optionsRadios3" th:value="10000">
-    <label class="form-check-label" for="optionsRadios3">
-        심야(24:00 ~06:00) 1인기준 10000원
-    </label>
-</div>
-</fieldset><br>
+
 <h3>날짜선택</h3><br>
 <div>
-    <input type="date" name="ticketDate" value="날짜">
+    <input type="date" th:min="${result2.movieCreated}" th:max="${result2.movieClose}" name="ticketDate" value="날짜" required>
     날짜를 선택해주세요
 </div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,14 +8,15 @@
 <body>
 <th:block th:replace="commonPages/adminheader :: header"></th:block>
 <div class="container">
-    <div id="title "style="margin-top: 100px">
+    <div id="title " style="margin-top: 100px">
         <h1>영화등록</h1>
     </div>
 
     <form action="/movie/save" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputEmail1" class="form-label mt-4">제목</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name="movieName" aria-describedby="eailHelp" placeholder="제목을 입력 해주세요" required>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="movieName" aria-describedby="eailHelp"
+                   placeholder="제목을 입력 해주세요" required>
             <small id="emailHelp" class="form-text text-muted">등록할 영화의 제목입니다.</small>
         </div>
         <div class="form-group">
@@ -26,24 +27,48 @@
         <div class="form-group">
             <label for="exampleSelect1" class="form-label mt-4">상영관선택</label>
             <select class="form-select" id="exampleSelect1" name="movieclass">
-                <option >A상영관</option>
-                <option >B상영관</option>
-                <option >C상영관</option>
+                <option>A상영관</option>
+                <option>B상영관</option>
+                <option>C상영관</option>
             </select>
         </div>
+        <br>
+        <legend class="mt-4"></legend>
+        <h3>영화시간대</h3><br>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="movieTime" id="optionsRadios1" th:value="조조">
+            <label class="form-check-label" for="optionsRadios1">
+                조조(06:00 ~12:00)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="movieTime" id="optionsRadios2" th:value="주간">
+            <label class="form-check-label" for="optionsRadios2">
+                주간(12:00 ~24:00)
+            </label>
+        </div>
+        <div class="form-check disabled">
+            <input class="form-check-input" type="radio" name="movieTime" id="optionsRadios3" th:value="심야">
+            <label class="form-check-label" for="optionsRadios3">
+                심야(24:00 ~06:00)
+            </label>
+        </div>
+        </fieldset><br>
 
         <div>
-        <input type="date" name="movieCreated" value="영화개봉일">
-        </div><br>
-        <div>
-            <input type="date" name="movieOpen" value="영화상영일">
+            <label for="formFile" class="form-label mt-4">영화개봉일</label><br>
+            <input type="date" name="movieCreated" value="영화개봉일">
         </div>
+        <br>
+        <br>
+
         <div>
+            <label for="formFile" class="form-label mt-4">영화마감일</label><br>
             <input type="date" name="movieClose" value="영화마감일">
         </div>
         <div class="form-group">
             <label for="formFile" class="form-label mt-4">사진등록</label>
-            <input class="form-control" type="file" id="formFile" name="moviePoster" >
+            <input class="form-control" type="file" id="formFile" name="moviePoster">
         </div>
         <br>
         <button type="submit" class="btn btn-secondary" th:onclick="save()">영화등록</button>
@@ -51,7 +76,7 @@
 </div>
 </body>
 <script th:inline="javascript">
-    function save(){
+    function save() {
         alert("영화 등록이 완료되었습니다.")
     }
 </script>

@@ -20,13 +20,7 @@ public class TicketEntity {
     private Long id;
 
     @Column
-    private String ticketTime;
-
-    @Column
     private int ticketPrice;
-
-    @Column
-    private String ticketDate;
 
     @Column
     private String memberName;
@@ -59,9 +53,7 @@ public class TicketEntity {
 
     public static TicketEntity save(TicketDTO ticketDTO) {
         TicketEntity ticketEntity = new TicketEntity();
-        ticketEntity.setTicketTime(ticketDTO.getTicketTime());
         ticketEntity.setTicketPrice(ticketDTO.getTicketPrice());
-        ticketEntity.setTicketDate(ticketDTO.getTicketDate());
         ticketEntity.setTicketCreated(ticketDTO.getTicketCreated());
         ticketEntity.setMemberName(ticketDTO.getMemberName());
         ticketEntity.setMovieName(ticketDTO.getMovieName());

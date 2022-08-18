@@ -63,9 +63,10 @@ public class MovieService {
                         movie.getMovieName(),
                         movie.getMovieclass(),
                         movie.getMovieContents(),
+                        movie.getMovieTime(),
                         movie.getMovieCreated(),
-                        movie.getMovieOpen(),
                         movie.getMovieClose()
+
 
                 ));
         return movieList;

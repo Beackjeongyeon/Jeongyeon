@@ -30,10 +30,10 @@ public class MovieEntity {
     private String movieContents;
 
     @Column
-    private String movieCreated;
+    private String movieTime;
 
     @Column
-    private String movieOpen;
+    private String movieCreated;
 
     @Column
     private String movieClose;
@@ -71,8 +71,8 @@ public class MovieEntity {
         movieEntity.setMovieName(movieDTO.getMovieName());
         movieEntity.setMovieclass(movieDTO.getMovieclass());
         movieEntity.setMovieContents(movieDTO.getMovieContents());
+        movieEntity.setMovieTime(movieDTO.getMovieTime());
         movieEntity.setMovieCreated(movieDTO.getMovieCreated());
-        movieEntity.setMovieOpen(movieDTO.getMovieOpen());
         movieEntity.setMovieClose(movieDTO.getMovieClose());
         movieEntity.setMoviePosterName(movieDTO.getMoviePosterName());
         return movieEntity;

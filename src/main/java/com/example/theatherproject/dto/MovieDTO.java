@@ -12,22 +12,22 @@ import org.springframework.web.multipart.MultipartFile;
 public class MovieDTO {
     private Long id;
     private String movieName;
-
     private String movieclass;
     private String movieContents;
+
+    private String movieTime;
     private String movieCreated;
-    private String movieOpen;
     private String movieClose;
     private MultipartFile moviePoster;
     private String moviePosterName;
 
-
-    public MovieDTO(Long id, String movieName, String movieclass, String movieContents, String movieCreated, String movieOpen, String movieClose) {
+    public MovieDTO(Long id, String movieName, String movieclass, String movieContents, String movieTime, String movieCreated, String movieClose) {
+        this.id = id;
         this.movieName = movieName;
         this.movieclass = movieclass;
         this.movieContents = movieContents;
+        this.movieTime = movieTime;
         this.movieCreated = movieCreated;
-        this.movieOpen = movieOpen;
         this.movieClose = movieClose;
     }
 
@@ -37,9 +37,8 @@ public class MovieDTO {
         movieDTO.setMovieName(movieEntity.getMovieName());
         movieDTO.setMovieclass(movieEntity.getMovieclass());
         movieDTO.setMovieContents(movieEntity.getMovieContents());
-        movieDTO.setMovieContents(movieEntity.getMovieContents());
+        movieDTO.setMovieTime(movieEntity.getMovieContents());
         movieDTO.setMovieCreated(movieEntity.getMovieCreated());
-        movieDTO.setMovieOpen(movieEntity.getMovieOpen());
         movieDTO.setMovieClose(movieEntity.getMovieClose());
         movieDTO.setMoviePosterName(movieEntity.getMoviePosterName());
         return movieDTO;

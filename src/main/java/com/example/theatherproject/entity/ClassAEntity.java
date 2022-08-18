@@ -42,7 +42,7 @@ public class ClassAEntity {
     private int A6;
 
     @Column
-    private Long movieId;
+    private Long moviePk;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_Id")
@@ -58,7 +58,7 @@ public class ClassAEntity {
         classAEntity.setA4(classADTO.getA4());
         classAEntity.setA5(classADTO.getA5());
         classAEntity.setA6(classADTO.getA6());
-        classAEntity.setMovieId(classADTO.getMovieId());
+        classAEntity.setMoviePk(classADTO.getMoviePk());
         return classAEntity;
     }
 }
