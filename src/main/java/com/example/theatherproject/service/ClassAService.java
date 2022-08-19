@@ -13,6 +13,7 @@ import com.example.theatherproject.repository.TicketRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,7 +26,7 @@ public class ClassAService {
 
     private final MemberRepository memberRepository;
 
-    public Long save(ClassADTO classADTO) {
+    public List<ClassAEntity> save(ClassADTO classADTO) {
         Optional<MovieEntity> optionalMovieEntity = movieRepository.findById(classADTO.getMoviePk());
         if (optionalMovieEntity.isPresent()) {
             MovieEntity movieEntity = optionalMovieEntity.get();
@@ -35,8 +36,9 @@ public class ClassAService {
                 Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(ticketEntity.getUserId());
                 if (optionalMemberEntity.isPresent()) {
                     MemberEntity memberEntity = optionalMemberEntity.get();
+                    List<ClassAEntity>classAEntityList= classARepository.findByTicketDate(classADTO.getTicketDate());
                     Long id = classARepository.save(ClassAEntity.save(classADTO, movieEntity, ticketEntity, memberEntity)).getId();
-                    return id;
+                    return classAEntityList;
                 }
             } else {
                 return null;
@@ -46,4 +48,17 @@ public class ClassAService {
 
         return null;
     }
+
+    public ClassADTO findById(Long id) {
+        Optional<ClassAEntity>optionalClassAEntity = classARepository.findById(id);
+        if(optionalClassAEntity.isPresent()){
+            ClassAEntity classAEntity= optionalClassAEntity.get();
+            ClassADTO classADTO = ClassADTO.tofind(classAEntity);
+            return classADTO;
+        }else{
+            return null;
+        }
+    }
+
+
 }

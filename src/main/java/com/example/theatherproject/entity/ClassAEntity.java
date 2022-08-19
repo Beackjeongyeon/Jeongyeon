@@ -24,25 +24,11 @@ public class ClassAEntity {
     private int DisCountA;
 
     @Column
-    private String TicketDate;
+    private String ticketDate;
 
     @Column
-    private int A1;
+    private String seat;
 
-    @Column
-    private int A2;
-
-    @Column
-    private int A3;
-
-    @Column
-    private int A4;
-
-    @Column
-    private int A5;
-
-    @Column
-    private int A6;
 
     @Column
     private Long moviePk;
@@ -69,12 +55,7 @@ public class ClassAEntity {
     public static ClassAEntity save(ClassADTO classADTO, MovieEntity movieEntity,TicketEntity ticketEntity,MemberEntity memberEntity) {
         ClassAEntity classAEntity = new ClassAEntity();
         classAEntity.setCountA(classADTO.getCountA());
-        classAEntity.setA1(classADTO.getA1());
-        classAEntity.setA2(classADTO.getA2());
-        classAEntity.setA3(classADTO.getA3());
-        classAEntity.setA4(classADTO.getA4());
-        classAEntity.setA5(classADTO.getA5());
-        classAEntity.setA6(classADTO.getA6());
+        classAEntity.setSeat(classADTO.getSeat());
         classAEntity.setTicketDate(ticketEntity.getTicketDate());
         classAEntity.setMoviePk(movieEntity.getId());
         classAEntity.setTicketPk(ticketEntity.getId());

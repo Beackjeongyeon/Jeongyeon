@@ -1,5 +1,7 @@
 package com.example.theatherproject.controller;
 import com.example.theatherproject.dto.TicketDTO;
+import com.example.theatherproject.entity.ClassAEntity;
+import com.example.theatherproject.entity.TicketEntity;
 import com.example.theatherproject.service.MemberService;
 import com.example.theatherproject.service.TicketService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 
 
 @Controller
@@ -21,13 +24,11 @@ public class TicketController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute TicketDTO ticketDTO,Model model){
-        Long id = ticketService.save(ticketDTO);
+        Long id  = ticketService.save(ticketDTO);
+        List<ClassAEntity>classAEntityList= ticketService.check(ticketDTO.getTicketDate());
         TicketDTO result= ticketService.findById(id);
-        Long result2 = ticketDTO.getId();
-        System.out.println(result);
-        System.out.println(result2);
-        model.addAttribute("result2",id);
         model.addAttribute("result",result);
+        model.addAttribute("check",classAEntityList);
         model.addAttribute("id",id);
         return "ticketPages/select";
     }

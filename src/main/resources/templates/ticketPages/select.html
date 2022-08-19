@@ -23,74 +23,86 @@
     <h3>좌석배치도</h3><br><br>
     <h4>스크린</h4><br><br>
     <td th:if="${result.movieClass} == A상영관">
+
+
         <form action="/classA/saveA" method="post">
             <input type="hidden" name="moviePk" th:value="${result.selectId}">
             <input type="hidden" name="TicketPk" th:value="${id}">
             <input type="hidden" name="MemberPk" th:value="${result.userId}">
-            <div>
-                <label class="form-check-label" for="optionsRadios1">
-                    A1
-                </label>
-                <input class="form-check-input" type="radio" name="A1" id="optionsRadios1" value="1">
-                &nbsp;
-                <label class="form-check-label" for="optionsRadios2">
-                    A2
-                </label>
-                <input class="form-check-input" type="radio" name="A2" id="optionsRadios2" value="1">
-                &nbsp;
-                <label class="form-check-label" for="optionsRadios3">
-                    A3
-                </label>
-                <input class="form-check-input" type="radio" name="A3" id="optionsRadios3" value="1">
-                &nbsp;
-            </div>
-            <br>
-            <div>
-                <label class="form-check-label" for="optionsRadios3">
-                    A4
-                </label>
-                <input class="form-check-input" type="radio" name="A4" id="optionsRadios3" value="1">
-                &nbsp;
-                <label class="form-check-label" for="optionsRadios3">
-                    A5
-                </label>
-                <input class="form-check-input" type="radio" name="A5" id="optionsRadios3" value="1">
-                &nbsp;
-                <label class="form-check-label" for="optionsRadios3">
-                    A6
-                </label>
-                <input class="form-check-input" type="radio" name="A6" id="optionsRadios3" value="1">
-                &nbsp;
-            </div>
-            <br>
-            <div>
-            <button type="reset" class="btn btn-secondary">초기화</button>
-            </div><br>
-            <div>
-            <button type="submit" class="btn btn-secondary" >좌석선택완료</button>
-            </div>
-        </form>
+    <td th:each="check :${check}">
+        <input type="hidden" th:value="${check.seat}" id="dup">
+    </td>
+    <div>
+
+        <label class="form-check-label" for="optionsRadios1">
+            A1
+        </label>
+        <input class="form-check-input" type="checkbox" name="seat" id="A1" value="A1" onclick="checkA1()">
+
+        &nbsp;
+        <label class="form-check-label" for="optionsRadios2">
+            A2
+        </label>
+        <input class="form-check-input" type="checkbox" name="seat" id="A2" value="A2" onclick="checkA2()">
+        &nbsp;
+        <label class="form-check-label" for="optionsRadios3">
+            A3
+        </label>
+        <input class="form-check-input" type="checkbox" name="seat" id="A3" value="A3" onclick="checkA3()">
+        &nbsp;
+    </div>
+    <br>
+    <div>
+        <label class="form-check-label" for="optionsRadios3">
+            A4
+        </label>
+        <input class="form-check-input" type="checkbox" name="seat" id="A4" value="A4" onclick="checkA4()">
+        &nbsp;
+        <label class="form-check-label" for="optionsRadios3">
+            A5
+        </label>
+        <input class="form-check-input" type="checkbox" name="seat" id="A5" value="A5" onclick="checkA5()">
+        &nbsp;
+        <label class="form-check-label" for="optionsRadios3">
+            A6
+        </label>
+        <input class="form-check-input" type="checkbox" name="seat" id="A6" value="A6" onclick="checkA6()">
+        &nbsp;
+    </div>
+    <br>
+    <div>
+        <button type="reset" class="btn btn-secondary">초기화</button>
+    </div>
+    <br>
+    <div>
+        <button type="submit" class="btn btn-secondary">좌석선택완료</button>
+    </div>
+    </form>
+
     </td>
 
 
     <td th:if="${result.movieClass} == B상영관">
         <form action="/classB/saveB" method="post">
             <input type="hidden" name="moviePk" th:value="${result.selectId}">
+            <input type="hidden" name="TicketPk" th:value="${id}">
+            <input type="hidden" name="MemberPk" th:value="${result.userId}">
+
             <div>
                 <label class="form-check-label" for="optionsRadios1">
                     B1
                 </label>
-                <input class="form-check-input" type="radio" name="B1" id="optionsRadios1">
+                <input class="form-check-input" type="radio" name="B1" id="optionsRadios1" value="B1">
                 &nbsp;
                 <label class="form-check-label" for="optionsRadios2">
                     B2
                 </label>
-                <input class="form-check-input" type="radio" name="B2" id="optionsRadios2">
+                <input class="form-check-input" type="radio" name="B2" id="optionsRadios2" value="B2">
                 &nbsp;
                 <label class="form-check-label" for="optionsRadios3">
                     B3
                 </label>
-                <input class="form-check-input" type="radio" name="B3" id="optionsRadios3">
+                <input class="form-check-input" type="radio" name="B3" id="optionsRadios3" value="B3">
                 &nbsp;
             </div>
             <br>
@@ -98,24 +110,25 @@
                 <label class="form-check-label" for="optionsRadios3">
                     B4
                 </label>
-                <input class="form-check-input" type="radio" name="B4" id="optionsRadios3">
+                <input class="form-check-input" type="radio" name="B4" id="optionsRadios3" value="B4">
                 &nbsp;
                 <label class="form-check-label" for="optionsRadios3">
                     B5
                 </label>
-                <input class="form-check-input" type="radio" name="B5" id="optionsRadios3">
+                <input class="form-check-input" type="radio" name="B5" id="optionsRadios3" value="B5">
                 &nbsp;
                 <label class="form-check-label" for="optionsRadios3">
                     B6
                 </label>
-                <input class="form-check-input" type="radio" name="B6" id="optionsRadios3">
+                <input class="form-check-input" type="radio" name="B6" id="optionsRadios3" value="B6">
                 &nbsp;
             </div>
             <br>
             <div>
-            <button type="reset" class="btn btn-secondary">초기화</button>
-            </div><br>
-            <button type="submit" class="btn btn-secondary" >좌석선택완료</button>
+                <button type="reset" class="btn btn-secondary">초기화</button>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-secondary">좌석선택완료</button>
         </form>
     </td>
 
@@ -123,21 +136,23 @@
     <td th:if="${result.movieClass} == C상영관">
         <form action="/classC/saveC" method="post">
             <input type="hidden" name="moviePk" th:value="${result.selectId}">
+            <input type="hidden" name="TicketPk" th:value="${id}">
+            <input type="hidden" name="MemberPk" th:value="${result.userId}">
             <div>
                 <label class="form-check-label" for="optionsRadios1">
                     C1
                 </label>
-                <input class="form-check-input" type="radio" name="C1" id="optionsRadios1">
+                <input class="form-check-input" type="radio" name="C1" id="optionsRadios1" value="C1">
                 &nbsp;
                 <label class="form-check-label" for="optionsRadios2">
                     C2
                 </label>
-                <input class="form-check-input" type="radio" name="C2" id="optionsRadios2">
+                <input class="form-check-input" type="radio" name="C2" id="optionsRadios2" value="C2">
                 &nbsp;
                 <label class="form-check-label" for="optionsRadios3">
                     C3
                 </label>
-                <input class="form-check-input" type="radio" name="C3" id="optionsRadios3">
+                <input class="form-check-input" type="radio" name="C3" id="optionsRadios3" value="C3">
                 &nbsp;
             </div>
             <br>
@@ -145,31 +160,105 @@
                 <label class="form-check-label" for="optionsRadios3">
                     C4
                 </label>
-                <input class="form-check-input" type="radio" name="C4" id="optionsRadios3">
+                <input class="form-check-input" type="radio" name="C4" id="optionsRadios3" value="C4">
                 &nbsp;
                 <label class="form-check-label" for="optionsRadios3">
                     C5
                 </label>
-                <input class="form-check-input" type="radio" name="C5" id="optionsRadios3">
+                <input class="form-check-input" type="radio" name="C5" id="optionsRadios3" value="C5">
                 &nbsp;
                 <label class="form-check-label" for="optionsRadios3">
                     C6
                 </label>
-                <input class="form-check-input" type="radio" name="C6" id="optionsRadios3">
+                <input class="form-check-input" type="radio" name="C6" id="optionsRadios3" value="C6">
                 &nbsp;
             </div>
             <br>
             <div>
-            <button type="reset" class="btn btn-secondary">초기화</button>
+                <button type="reset" class="btn btn-secondary">초기화</button>
             </div>
             <br>
-            <button type="submit" class="btn btn-secondary" >좌석선택완료</button>
+            <button type="submit" class="btn btn-secondary">좌석선택완료</button>
 
         </form>
-
-
     </td>
 
 </div>
 </body>
+<script>
+    function checkA1(check) {
+        const A1 = document.getElementById("A1").value;
+        const dup = document.getElementById("dup").value;
+
+        if (A1 != dup) {
+            check = true
+        } else {
+            check = false;
+            alert("이미 선택된 좌석입니다.")
+        }
+    }
+
+    function checkA2(check) {
+        const A2 = document.getElementById("A2").value;
+        const dup = document.getElementById("dup").value;
+
+        if (A2 != dup) {
+            check = true
+        } else {
+            check = false;
+            alert("이미 선택된 좌석입니다.")
+        }
+    }
+
+    function checkA3(check) {
+        const A3 = document.getElementById("A3").value;
+        const dup = document.getElementById("dup").value;
+
+        if (A3 != dup) {
+            check = true
+        } else {
+            check = false;
+            alert("이미 선택된 좌석입니다.")
+        }
+    }
+
+    function checkA4(check) {
+        const A4 = document.getElementById("A4").value;
+        const dup = document.getElementById("dup").value;
+
+        if (A4 != dup) {
+            check = true
+        } else {
+            check = false;
+            alert("이미 선택된 좌석입니다.")
+        }
+    }
+
+    function checkA5(check) {
+        const A5 = document.getElementById("A5").value;
+        const dup = document.getElementById("dup").value;
+
+        if (A1 != dup) {
+            check = true
+        } else {
+            check = false;
+            alert("이미 선택된 좌석입니다.")
+        }
+    }
+
+    function checkA6(check) {
+        const A6 = document.getElementById("A6").value;
+        const dup = document.getElementById("dup").value;
+
+        if (A1 != dup) {
+            check = true
+        } else {
+            check = false;
+            alert("이미 선택된 좌석입니다.")
+        }
+    }
+
+</script>
+
+
 </html>
