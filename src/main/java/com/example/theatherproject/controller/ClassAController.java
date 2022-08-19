@@ -16,8 +16,6 @@ public class ClassAController {
 
     @PostMapping("/saveA")
     public String save(@ModelAttribute ClassADTO classADTO){
-        Long result= classADTO.getMoviePk();
-        System.out.println(result);
         Long id = classAService.save(classADTO);
         return "ticketPages/pay";
     }

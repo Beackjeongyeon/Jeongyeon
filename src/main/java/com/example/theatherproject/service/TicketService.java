@@ -21,7 +21,7 @@ public class TicketService {
 
     private final MovieRepository movieRepository;
 
-    public TicketDTO save(TicketDTO ticketDTO) {
+    public Long save(TicketDTO ticketDTO) {
         Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(ticketDTO.getUserId());
         Optional<MovieEntity> optionalMovieEntity = movieRepository.findById(ticketDTO.getSelectId());
         if (optionalMemberEntity.isPresent()) {
@@ -29,12 +29,23 @@ public class TicketService {
             if (optionalMovieEntity.isPresent()) {
                 MovieEntity movieEntity = optionalMovieEntity.get();
              TicketEntity ticketEntity= ticketRepository.save(TicketEntity.save(ticketDTO, memberEntity, movieEntity));
-             TicketDTO ticketDTO1= TicketDTO.ticketDTO(ticketEntity);
-             return ticketDTO1;
+             Long id = ticketEntity.getId();
+             return id;
             }else{
              return null;
             }
 
         }return null;
+    }
+
+    public TicketDTO findById(Long id) {
+        Optional<TicketEntity>optionalTicketEntity= ticketRepository.findById(id);
+        if(optionalTicketEntity.isPresent()){
+            TicketEntity ticketEntity= optionalTicketEntity.get();
+            TicketDTO ticketDTO= TicketDTO.ticketDTO(ticketEntity);
+            return ticketDTO;
+        }else{
+            return null;
+        }
     }
 }

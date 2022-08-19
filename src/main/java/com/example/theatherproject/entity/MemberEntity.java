@@ -60,6 +60,14 @@ public class MemberEntity {
             fetch = FetchType.LAZY)
     private List<TicketEntity> ticketEntityList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "memberEntity",
+            cascade = CascadeType.REMOVE,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
+    private List<ClassAEntity> classAEntity = new ArrayList<>();
+
+
+
 
     public static MemberEntity save(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();

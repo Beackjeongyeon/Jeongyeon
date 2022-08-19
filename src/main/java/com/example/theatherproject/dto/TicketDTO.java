@@ -50,12 +50,12 @@ public class TicketDTO {
 
     public static TicketDTO ticketDTO(TicketEntity ticketEntity) {
         TicketDTO ticketDTO = new TicketDTO();
-        ticketDTO.setMemberName(ticketEntity.getMemberName());
-        ticketDTO.setMovieName(ticketEntity.getMovieName());
-        ticketDTO.setMovieClass(ticketEntity.getMovieClass());
         ticketDTO.setTicketPrice(ticketEntity.getTicketPrice());
         ticketDTO.setTicketDate(ticketEntity.getTicketDate());
         ticketDTO.setTicketCreated(ticketEntity.getTicketCreated());
+        ticketDTO.setMemberName(ticketEntity.getMemberName());
+        ticketDTO.setMovieName(ticketEntity.getMovieName());
+        ticketDTO.setMovieClass(ticketEntity.getMovieClass());
         ticketDTO.setUserId(ticketEntity.getUserId());
         ticketDTO.setSelectId(ticketEntity.getSelectId());
         return ticketDTO;

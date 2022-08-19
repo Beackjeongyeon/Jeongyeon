@@ -50,6 +50,9 @@ public class ClassAEntity {
     @Column
     private Long TicketPk;
 
+    @Column
+    private Long MemberPk;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_Id")
     private MovieEntity movieEntity;
@@ -58,8 +61,12 @@ public class ClassAEntity {
     @JoinColumn(name = "ticket_Id")
     private TicketEntity ticketEntity;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private MemberEntity memberEntity;
 
-    public static ClassAEntity save(ClassADTO classADTO, MovieEntity movieEntity,TicketEntity ticketEntity) {
+
+    public static ClassAEntity save(ClassADTO classADTO, MovieEntity movieEntity,TicketEntity ticketEntity,MemberEntity memberEntity) {
         ClassAEntity classAEntity = new ClassAEntity();
         classAEntity.setCountA(classADTO.getCountA());
         classAEntity.setA1(classADTO.getA1());
@@ -71,7 +78,10 @@ public class ClassAEntity {
         classAEntity.setTicketDate(ticketEntity.getTicketDate());
         classAEntity.setMoviePk(movieEntity.getId());
         classAEntity.setTicketPk(ticketEntity.getId());
+        classAEntity.setMemberPk(memberEntity.getId());
         classAEntity.setMovieEntity(movieEntity);
+        classAEntity.setTicketEntity(ticketEntity);
+        classAEntity.setMemberEntity(memberEntity);
         return classAEntity;
     }
 }

@@ -25,7 +25,8 @@
     <td th:if="${result.movieClass} == A상영관">
         <form action="/classA/saveA" method="post">
             <input type="hidden" name="moviePk" th:value="${result.selectId}">
-            <input type="hidden" name="TicketPk" th:value="${result.id}">
+            <input type="hidden" name="TicketPk" th:value="${id}">
+            <input type="hidden" name="MemberPk" th:value="${result.userId}">
             <div>
                 <label class="form-check-label" for="optionsRadios1">
                     A1
@@ -58,7 +59,7 @@
                 <label class="form-check-label" for="optionsRadios3">
                     A6
                 </label>
-                <input class="form-check-input" type="radio" name="A6" id="optionsRadios3">
+                <input class="form-check-input" type="radio" name="A6" id="optionsRadios3" value="1">
                 &nbsp;
             </div>
             <br>
