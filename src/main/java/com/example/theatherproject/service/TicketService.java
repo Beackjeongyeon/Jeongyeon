@@ -13,6 +13,7 @@ import com.example.theatherproject.repository.TicketRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,30 +36,37 @@ public class TicketService {
             if (optionalMovieEntity.isPresent()) {
                 MovieEntity movieEntity = optionalMovieEntity.get();
 
-                 Long id= ticketRepository.save(TicketEntity.save(ticketDTO, memberEntity, movieEntity)).getId();
+                Long id = ticketRepository.save(TicketEntity.save(ticketDTO, memberEntity, movieEntity)).getId();
 
-             return id;
-            }else{
-             return null;
+                return id;
+            } else {
+                return null;
             }
 
-        }return null;
+        }
+        return null;
     }
 
     public TicketDTO findById(Long id) {
-        Optional<TicketEntity>optionalTicketEntity= ticketRepository.findById(id);
-        if(optionalTicketEntity.isPresent()){
-            TicketEntity ticketEntity= optionalTicketEntity.get();
-            TicketDTO ticketDTO= TicketDTO.ticketDTO(ticketEntity);
+        Optional<TicketEntity> optionalTicketEntity = ticketRepository.findById(id);
+        if (optionalTicketEntity.isPresent()) {
+            TicketEntity ticketEntity = optionalTicketEntity.get();
+            TicketDTO ticketDTO = TicketDTO.ticketDTO(ticketEntity);
             return ticketDTO;
-        }else{
+        } else {
             return null;
         }
     }
 
-    public List<ClassAEntity> check(String ticketDate) {
-        List<ClassAEntity> classAEntity = classARepository.findByTicketDate(ticketDate);
-        return classAEntity;
+    public List<ClassADTO> check(String ticketDate) {
+        List<ClassADTO> classADTOList = new ArrayList<>();
+        List<ClassAEntity> classAEntityList = classARepository.findByTicketDate(ticketDate);
+        for (ClassAEntity classA : classAEntityList) {
+            classADTOList.add(ClassADTO.tofind(classA));
+            return classADTOList;
 
+
+        }
+        return null;
     }
 }

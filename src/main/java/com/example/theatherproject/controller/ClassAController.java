@@ -20,7 +20,8 @@ public class ClassAController {
 
     @PostMapping("/saveA")
     public String save(@ModelAttribute ClassADTO classADTO, Model model){
-        List<ClassAEntity> check = classAService.save(classADTO);
+        Long id = classAService.save(classADTO);
+        ClassADTO check= classAService.findById(id);
         model.addAttribute("check",check);
         return "ticketPages/pay";
     }

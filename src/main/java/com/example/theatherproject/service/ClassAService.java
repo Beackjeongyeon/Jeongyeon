@@ -26,7 +26,7 @@ public class ClassAService {
 
     private final MemberRepository memberRepository;
 
-    public List<ClassAEntity> save(ClassADTO classADTO) {
+    public Long save(ClassADTO classADTO) {
         Optional<MovieEntity> optionalMovieEntity = movieRepository.findById(classADTO.getMoviePk());
         if (optionalMovieEntity.isPresent()) {
             MovieEntity movieEntity = optionalMovieEntity.get();
@@ -36,9 +36,8 @@ public class ClassAService {
                 Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(ticketEntity.getUserId());
                 if (optionalMemberEntity.isPresent()) {
                     MemberEntity memberEntity = optionalMemberEntity.get();
-                    List<ClassAEntity>classAEntityList= classARepository.findByTicketDate(classADTO.getTicketDate());
                     Long id = classARepository.save(ClassAEntity.save(classADTO, movieEntity, ticketEntity, memberEntity)).getId();
-                    return classAEntityList;
+                    return id;
                 }
             } else {
                 return null;

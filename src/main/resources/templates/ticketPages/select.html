@@ -6,80 +6,70 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap2.css}">
 </head>
 <body>
+
 <th:block th:replace="commonPages/header :: header"></th:block>
 <div class="container">
     <div id="title " style="margin-top: 100px">
         <h1>영화예매</h1>
     </div>
     <br>
-
-    <h4>
-        <td th:text="${result.movieClass}"></td>
-    </h4>
-
-
     </fieldset><br>
     <legend class="mt-4"></legend>
     <h3>좌석배치도</h3><br><br>
     <h4>스크린</h4><br><br>
-    <td th:if="${result.movieClass} == A상영관">
-
-
-        <form action="/classA/saveA" method="post">
+        <form action="/classA/saveA" method="post" th:if="${result.movieClass} == A상영관">
             <input type="hidden" name="moviePk" th:value="${result.selectId}">
             <input type="hidden" name="TicketPk" th:value="${id}">
-            <input type="hidden" name="MemberPk" th:value="${result.userId}">
-    <td th:each="check :${check}">
-        <input type="hidden" th:value="${check.seat}" id="dup">
-    </td>
-    <div>
+            <tr th:each="check:${check}">
+                <td th:if="${check.seat == 'A1'}">
+                    이미 예약A1
+                </td>
+                <td th:if="${check.seat != 'A1'}">
+                <label class="form-check-label" for="optionsRadios1" >
+                    A1
+                </label>
+                <input class="form-check-input" type="checkbox" name="seat" id="A1" value="A1">
+                </td>
+            </tr>
+                <label class="form-check-label" for="optionsRadios2">
+                    A2
+                </label>
+                <input class="form-check-input" type="checkbox" name="seat" id="A2" value="A2">
+                <label class="form-check-label" for="optionsRadios3">
+                    A3
+                </label>
+                <input class="form-check-input" type="checkbox" name="seat" id="A3" value="A3">
+                &nbsp;
 
-        <label class="form-check-label" for="optionsRadios1">
-            A1
-        </label>
-        <input class="form-check-input" type="checkbox" name="seat" id="A1" value="A1" onclick="checkA1()">
 
-        &nbsp;
-        <label class="form-check-label" for="optionsRadios2">
-            A2
-        </label>
-        <input class="form-check-input" type="checkbox" name="seat" id="A2" value="A2" onclick="checkA2()">
-        &nbsp;
-        <label class="form-check-label" for="optionsRadios3">
-            A3
-        </label>
-        <input class="form-check-input" type="checkbox" name="seat" id="A3" value="A3" onclick="checkA3()">
-        &nbsp;
-    </div>
-    <br>
-    <div>
-        <label class="form-check-label" for="optionsRadios3">
-            A4
-        </label>
-        <input class="form-check-input" type="checkbox" name="seat" id="A4" value="A4" onclick="checkA4()">
-        &nbsp;
-        <label class="form-check-label" for="optionsRadios3">
-            A5
-        </label>
-        <input class="form-check-input" type="checkbox" name="seat" id="A5" value="A5" onclick="checkA5()">
-        &nbsp;
-        <label class="form-check-label" for="optionsRadios3">
-            A6
-        </label>
-        <input class="form-check-input" type="checkbox" name="seat" id="A6" value="A6" onclick="checkA6()">
-        &nbsp;
-    </div>
-    <br>
-    <div>
-        <button type="reset" class="btn btn-secondary">초기화</button>
-    </div>
-    <br>
-    <div>
-        <button type="submit" class="btn btn-secondary">좌석선택완료</button>
-    </div>
-    </form>
+                <div>
+                    <label class="form-check-label" for="optionsRadios3">
+                        A4
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="seat" id="A4" value="A4">
+                    &nbsp;
+                    <label class="form-check-label" for="optionsRadios3">
+                        A5
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="seat" id="A5" value="A5">
+                    &nbsp;
+                    <label class="form-check-label" for="optionsRadios3">
+                        A6
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="seat" id="A6" value="A6">
+                    &nbsp;
+                </div>
 
-    </td>
+                <br>
+                <div>
+                    <button type="reset" class="btn btn-secondary">초기화</button>
+                </div>
+                <br>
+                <div>
+                    <button type="submit" class="btn btn-secondary">좌석선택완료</button>
+                </div>
+        </form>
+    </tr>
 
 
     <td th:if="${result.movieClass} == B상영관">
@@ -183,82 +173,83 @@
         </form>
     </td>
 
+
 </div>
 </body>
-<script>
-    function checkA1(check) {
-        const A1 = document.getElementById("A1").value;
-        const dup = document.getElementById("dup").value;
+<!--<script>-->
+<!--    function checkA1(check) {-->
+<!--        const A1 = document.getElementById("A1").value;-->
+<!--        const dup = document.getElementById("dup").value;-->
 
-        if (A1 != dup) {
-            check = true
-        } else {
-            check = false;
-            alert("이미 선택된 좌석입니다.")
-        }
-    }
+<!--        if (A1 != dup) {-->
+<!--            check = true-->
+<!--        } else {-->
+<!--            check = false;-->
+<!--            alert("이미 선택된 좌석입니다.")-->
+<!--        }-->
+<!--    }-->
 
-    function checkA2(check) {
-        const A2 = document.getElementById("A2").value;
-        const dup = document.getElementById("dup").value;
+<!--    function checkA2(check) {-->
+<!--        const A2 = document.getElementById("A2").value;-->
+<!--        const dup = document.getElementById("dup").value;-->
 
-        if (A2 != dup) {
-            check = true
-        } else {
-            check = false;
-            alert("이미 선택된 좌석입니다.")
-        }
-    }
+<!--        if (A2 != dup) {-->
+<!--            check = true-->
+<!--        } else {-->
+<!--            check = false;-->
+<!--            alert("이미 선택된 좌석입니다.")-->
+<!--        }-->
+<!--    }-->
 
-    function checkA3(check) {
-        const A3 = document.getElementById("A3").value;
-        const dup = document.getElementById("dup").value;
+<!--    function checkA3(check) {-->
+<!--        const A3 = document.getElementById("A3").value;-->
+<!--        const dup = document.getElementById("dup").value;-->
 
-        if (A3 != dup) {
-            check = true
-        } else {
-            check = false;
-            alert("이미 선택된 좌석입니다.")
-        }
-    }
+<!--        if (A3 != dup) {-->
+<!--            check = true-->
+<!--        } else {-->
+<!--            check = false;-->
+<!--            alert("이미 선택된 좌석입니다.")-->
+<!--        }-->
+<!--    }-->
 
-    function checkA4(check) {
-        const A4 = document.getElementById("A4").value;
-        const dup = document.getElementById("dup").value;
+<!--    function checkA4(check) {-->
+<!--        const A4 = document.getElementById("A4").value;-->
+<!--        const dup = document.getElementById("dup").value;-->
 
-        if (A4 != dup) {
-            check = true
-        } else {
-            check = false;
-            alert("이미 선택된 좌석입니다.")
-        }
-    }
+<!--        if (A4 != dup) {-->
+<!--            check = true-->
+<!--        } else {-->
+<!--            check = false;-->
+<!--            alert("이미 선택된 좌석입니다.")-->
+<!--        }-->
+<!--    }-->
 
-    function checkA5(check) {
-        const A5 = document.getElementById("A5").value;
-        const dup = document.getElementById("dup").value;
+<!--    function checkA5(check) {-->
+<!--        const A5 = document.getElementById("A5").value;-->
+<!--        const dup = document.getElementById("dup").value;-->
 
-        if (A1 != dup) {
-            check = true
-        } else {
-            check = false;
-            alert("이미 선택된 좌석입니다.")
-        }
-    }
+<!--        if (A1 != dup) {-->
+<!--            check = true-->
+<!--        } else {-->
+<!--            check = false;-->
+<!--            alert("이미 선택된 좌석입니다.")-->
+<!--        }-->
+<!--    }-->
 
-    function checkA6(check) {
-        const A6 = document.getElementById("A6").value;
-        const dup = document.getElementById("dup").value;
+<!--    function checkA6(check) {-->
+<!--        const A6 = document.getElementById("A6").value;-->
+<!--        const dup = document.getElementById("dup").value;-->
 
-        if (A1 != dup) {
-            check = true
-        } else {
-            check = false;
-            alert("이미 선택된 좌석입니다.")
-        }
-    }
+<!--        if (A1 != dup) {-->
+<!--            check = true-->
+<!--        } else {-->
+<!--            check = false;-->
+<!--            alert("이미 선택된 좌석입니다.")-->
+<!--        }-->
+<!--    }-->
 
-</script>
+<!--</script>-->
 
 
 </html>
